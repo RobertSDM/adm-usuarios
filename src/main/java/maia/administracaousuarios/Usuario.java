@@ -3,43 +3,26 @@ package maia.administracaousuarios;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "usuario")
+@Table(name = "tb_mai_usuario")
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "id_usuario", nullable = false)
+    @Column(name = "id_usuario", length = 50)
     private String idUsuario;
-    @Column(name = "nome", nullable = false)
-    private String nome;
-    @Column(name="cnpj", nullable = false)
-    private String cnpj;
-    @Column(name = "contato", nullable = false)
-    private String contato;
-    @Column(name = "login", nullable = false)
+    @Column(name = "login", length = 30, nullable = false, unique = true)
     private String login;
-    @Column(name = "senha")
+    @Column(name = "senha",length = 20, nullable = false)
     private String senha;
-    @Column(name = "salt")
+    @Column(name = "salt", length = 50)
     private String salt;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_endereco", nullable = false)
-    private Endereco endereco;
 
     public Usuario() {
     }
 
-    public Usuario(String idUsuario, String nome, String cnpj, String contato) {
+    public Usuario(String idUsuario, String login, String senha, String salt) {
         this.idUsuario = idUsuario;
-        this.nome = nome;
-        this.cnpj = cnpj;
-        this.contato = contato;
-    }
-
-    public String getSalt() {
-        return salt;
-    }
-
-    public void setSalt(String salt) {
+        this.login = login;
+        this.senha = senha;
         this.salt = salt;
     }
 
@@ -49,30 +32,6 @@ public class Usuario {
 
     public void setIdUsuario(String idUsuario) {
         this.idUsuario = idUsuario;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
-
-    public String getContato() {
-        return contato;
-    }
-
-    public void setContato(String contato) {
-        this.contato = contato;
     }
 
     public String getLogin() {
@@ -91,11 +50,11 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
+    public String getSalt() {
+        return salt;
     }
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
+    public void setSalt(String salt) {
+        this.salt = salt;
     }
 }

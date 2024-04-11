@@ -1,4 +1,4 @@
-package maia.administracaousuarios;
+package maia.administracaousuarios.domains.empresa;
 
 import maia.administracaousuarios.repositories.*;
 import maia.administracaousuarios.security.Encrypt;

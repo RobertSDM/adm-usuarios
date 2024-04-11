@@ -1,6 +1,7 @@
-package maia.administracaousuarios;
+package maia.administracaousuarios.domains.cidade;
 
 import jakarta.persistence.*;
+import maia.administracaousuarios.domains.estado.Estado;
 
 @Entity
 @Table(name = "tb_mai_cidade")

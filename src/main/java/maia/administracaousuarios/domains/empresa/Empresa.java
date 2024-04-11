@@ -1,6 +1,8 @@
-package maia.administracaousuarios;
+package maia.administracaousuarios.domains.empresa;
 
 import jakarta.persistence.*;
+import maia.administracaousuarios.domains.logradouro.Logradouro;
+import maia.administracaousuarios.domains.usuario.Usuario;
 
 @Entity
 @Table(name = "tb_mai_empresa")

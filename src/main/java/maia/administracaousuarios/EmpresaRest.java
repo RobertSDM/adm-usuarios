@@ -1,8 +1,11 @@
 package maia.administracaousuarios;
 
+import maia.administracaousuarios.repositories.*;
+import maia.administracaousuarios.security.Encrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -11,6 +14,7 @@ import java.util.NoSuchElementException;
 public class EmpresaRest {
     @Autowired()
     private EmpresaRepository empresaRep;
+
 
     @GetMapping(value = "/find/all")
     public List<Empresa> findAll() {
@@ -28,11 +32,15 @@ public class EmpresaRest {
 
     }
 
-    // TODO: create the encrypt and validate password
-
     @PostMapping(value = "/create")
     public Boolean create(@RequestBody Empresa body) {
-        System.out.println(body);
+        ArrayList<String> encrypted = Encrypt.encryptPassword(body.getUsuario().getSenha());
+
+
+        System.out.println(encrypted.get(0));
+        body.getUsuario().setSenha(encrypted.get(0));
+        body.getUsuario().setSalt(encrypted.get(1));
+
         empresaRep.save(body);
         return true;
     }

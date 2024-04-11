@@ -11,13 +11,25 @@ public class Cidade {
     private String idCidade;
     @Column(name = "nm_cidade", length = 50)
     private String nome;
+    @OneToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_estado", nullable = false)
+    private Estado estado;
 
     public Cidade() {
     }
 
-    public Cidade(String idCidade, String nome) {
+    public Cidade(String idCidade, String nome, Estado estado) {
         this.idCidade = idCidade;
         this.nome = nome;
+        this.estado = estado;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
     }
 
     public String getIdCidade() {

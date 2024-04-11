@@ -13,10 +13,10 @@ public class Empresa {
     private String nome;
     @Column(name = "nr_cnpj", length = 14, nullable = false, unique = true)
     private String cnpj;
-    @OneToOne(optional = false)
+    @OneToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_logradouro")
     private Logradouro logradouro;
 

@@ -11,17 +11,25 @@ public class Logradouro {
     private String idLogradouro;
     @Column(name = "nr_cep", length = 8, nullable = false)
     private String cep;
-    @OneToOne(optional = false)
-    @JoinColumn(name = "id_estado")
-    private Estado estado;
+    @OneToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_cidade")
+    private Cidade cidade;
 
     public Logradouro() {
     }
 
-    public Logradouro(String idLogradouro, String cep, Estado estado) {
+    public Logradouro(String idLogradouro, String cep, Cidade cidade) {
         this.idLogradouro = idLogradouro;
         this.cep = cep;
-        this.estado = estado;
+        this.cidade = cidade;
+    }
+
+    public Cidade getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(Cidade cidade) {
+        this.cidade = cidade;
     }
 
     public String getIdLogradouro() {
@@ -40,11 +48,4 @@ public class Logradouro {
         this.cep = cep;
     }
 
-    public Estado getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Estado estado) {
-        this.estado = estado;
-    }
 }

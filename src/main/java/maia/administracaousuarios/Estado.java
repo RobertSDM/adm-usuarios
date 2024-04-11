@@ -15,18 +15,14 @@ public class Estado {
     private String sigla;
     @Column(name = "nm_estado", length = 30, nullable = false)
     private String nome;
-    @OneToMany(orphanRemoval = true)
-    @JoinColumn(name = "id_estado", nullable = false)
-    private List<Cidade> cidades;
 
     public Estado() {
     }
 
-    public Estado(String idEstado, String sigla, String nome, List<Cidade> cidades) {
+    public Estado(String idEstado, String sigla, String nome) {
         this.idEstado = idEstado;
         this.sigla = sigla;
         this.nome = nome;
-        this.cidades = cidades;
     }
 
     public String getSigla() {
@@ -53,11 +49,4 @@ public class Estado {
         this.nome = nome;
     }
 
-    public List<Cidade> getCidades() {
-        return cidades;
-    }
-
-    public void setCidades(List<Cidade> cidades) {
-        this.cidades = cidades;
-    }
 }

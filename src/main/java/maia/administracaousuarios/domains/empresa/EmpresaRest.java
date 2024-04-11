@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping(value = "/usuario")
+@RequestMapping(value = "/empresa")
 public class EmpresaRest {
     @Autowired()
     private EmpresaRepository empresaRep;

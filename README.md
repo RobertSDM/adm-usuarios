@@ -28,7 +28,7 @@ Agora com todas as configurações necessarias feitas, basta rodar o projeto.
 
 ## UML das entidades
 
-![](./imgs/UML entidades.jpeg)
+![](./imgs/UML_entidades.jpeg)
 
 
 ## Video descrevendo projeto

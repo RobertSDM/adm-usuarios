@@ -42,8 +42,6 @@ public class EmpresaRest {
     public ResponseEntity<Empresa> create(@RequestBody Empresa body) {
         ArrayList<String> encrypted = Encrypt.encryptPassword(body.getUsuario().getSenha());
 
-
-        System.out.println(encrypted.get(0));
         body.getUsuario().setSenha(encrypted.get(0));
         body.getUsuario().setSalt(encrypted.get(1));
 

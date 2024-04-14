@@ -26,9 +26,13 @@ Com todas as depêndencias baixadas, adicione os dados para se conectar ao banco
 
 Agora com todas as configurações necessarias feitas, basta rodar o projeto.
 
-## UML das entidades
+## Diagramas
 
-![](./images/UML_entidades.jpeg)
+Diagrama de entidades
+![](./images/Diagrama_de_classes.jpeg)
+
+Diagrama de relacionamento
+![](./images/Diagrama_relacional.svg)
 
 
 ## Video descrevendo projeto

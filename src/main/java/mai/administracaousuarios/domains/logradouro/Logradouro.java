@@ -12,7 +12,7 @@ public class Logradouro {
     private String idLogradouro;
     @Column(name = "nr_cep", length = 8, nullable = false)
     private String cep;
-    @OneToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_cidade")
     private Cidade cidade;
 

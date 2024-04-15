@@ -36,13 +36,7 @@ public class LogradouroRest {
 
     }
 
-    @DeleteMapping(name = "/delete/{id}")
-    public ResponseEntity put(@PathVariable String id) {
-        logradouroRep.deleteById(id);
-        return ResponseEntity.noContent().build();
-    }
-
-    @PutMapping(name = "/update/{id}")
+    @PutMapping(value = "/update/{id}")
     public ResponseEntity put(@PathVariable String id, @RequestBody Logradouro body) {
         try{
             Logradouro logradouro = logradouroRep.findById(id).get();

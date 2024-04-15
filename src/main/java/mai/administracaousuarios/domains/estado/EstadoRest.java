@@ -36,13 +36,7 @@ public class EstadoRest {
 
     }
 
-    @DeleteMapping(name = "/delete/{id}")
-    public ResponseEntity put(@PathVariable String id) {
-        estadoRep.deleteById(id);
-        return ResponseEntity.noContent().build();
-    }
-
-    @PutMapping(name = "/update/{id}")
+    @PutMapping(value = "/update/{id}")
     public ResponseEntity<Estado> put(@PathVariable String id, @RequestBody Estado body) {
         try{
             Estado estado = estadoRep.findById(id).get();

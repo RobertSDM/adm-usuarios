@@ -36,13 +36,7 @@ public class CidadeRest {
 
     }
 
-    @DeleteMapping(name = "/delete/{id}")
-    public ResponseEntity put(@PathVariable String id) {
-        cidadeRep.deleteById(id);
-        return ResponseEntity.noContent().build();
-    }
-
-    @PutMapping(name = "/update/{id}")
+    @PutMapping(value = "/update/{id}")
     public ResponseEntity put(@PathVariable String id, @RequestBody Cidade body) {
         try{
             Cidade cidade = cidadeRep.findById(id).get();

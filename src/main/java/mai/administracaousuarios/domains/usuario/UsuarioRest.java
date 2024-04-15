@@ -37,14 +37,8 @@ public class UsuarioRest {
         }
     }
 
-    @DeleteMapping(name = "/delete/{id}")
-    public ResponseEntity put(@PathVariable String id) {
-        usuarioRep.deleteById(id);
-        return ResponseEntity.noContent().build();
-    }
-
-    @PutMapping(name = "/update/{id}")
-    public ResponseEntity<Usuario> putAll(@PathVariable String id,@RequestParam(defaultValue = "login") String type, @RequestBody Usuario body) {
+    @PutMapping(value = "/update/{id}")
+    public ResponseEntity<Usuario> put(@PathVariable String id,@RequestParam(defaultValue = "login") String type, @RequestBody Usuario body) {
         try{
             Usuario usuario = usuarioRep.findById(id).get();
             ArrayList<String> encrypt = Encrypt.encryptPassword(body.getSenha());

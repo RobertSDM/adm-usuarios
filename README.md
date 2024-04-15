@@ -24,6 +24,9 @@ Com todas as depêndencias baixadas, adicione os dados para se conectar ao banco
 /src/main/resources/application.properties
 ```
 
+Quando depois executar aplicação pela primeira vez, você poderá comentar o comando
+`spring.jpa.hibernate.ddl-auto=create` no application.properties
+
 Agora com todas as configurações necessarias feitas, basta rodar o projeto.
 
 ## Diagramas
@@ -110,14 +113,6 @@ Diagrama de relacionamento
 | 200    | Retorna um json com o usuario atualizado            |
 | 404    | Caso o usuario com o id enviado não seja encontrado |
 
-`DELETE`
-
-#### /delete/{id}
-| Código | Descrição                                           |
-|--------|-----------------------------------------------------|
-| 204    | Caso o usuario seja deletado com sucesso            |
-| 404    | Caso o usuario com o id enviado não seja encontrado |
-
 ## <a id="logradouro"></a>Logradouro
 
 `GET`
@@ -140,14 +135,6 @@ Diagrama de relacionamento
 | Código | Descrição                                              |
 |--------|--------------------------------------------------------|
 | 200    | Retorna um json com o logradouro atualizado            |
-| 404    | Caso o logradouro com o id enviado não seja encontrado |
-
-`DELETE`
-
-#### /delete/{id}
-| Código | Descrição                                              |
-|--------|--------------------------------------------------------|
-| 204    | Caso o logradouro seja deletado com sucesso            |
 | 404    | Caso o logradouro com o id enviado não seja encontrado |
 
 ## <a id="cidade"></a>Cidade
@@ -175,14 +162,6 @@ Diagrama de relacionamento
 | 200    | Retorna um json com a cidade atualizada            |
 | 404    | Caso a cidade com o id enviado não seja encontrada |
 
-`DELETE`
-
-#### /delete/{id}
-| Código | Descrição                                          |
-|--------|----------------------------------------------------|
-| 204    | Caso a cidade seja deletada com sucesso            |
-| 404    | Caso a cidade com o id enviado não seja encontrada |
-
 ## <a id="estado"></a>Estado
 
 `GET`
@@ -207,10 +186,3 @@ Diagrama de relacionamento
 | 200    | Retorna um json com o estado atualizado            |
 | 404    | Caso o estado com o id enviado não seja encontrado |
 
-`DELETE`
-
-#### 
-| Código | Descrição                                          |
-|--------|----------------------------------------------------|
-| 204    | Caso o estado seja deletado com sucesso            |
-| 404    | Caso o estado com o id enviado não seja encontrado |

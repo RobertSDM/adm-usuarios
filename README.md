@@ -36,7 +36,7 @@ Diagrama de relacionamento
 
 
 ## Video descrevendo projeto
-[Video de apresentação do projeto](https://youtu.be/D_iAdAdUSYU)
+[Video de apresentação do projeto](https://youtu.be/ntipsKUMlzE)
 
 # Documentação API
 

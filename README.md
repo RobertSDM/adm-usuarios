@@ -84,10 +84,10 @@ Diagrama de relacionamento
 `DELETE`
 
 #### /delete/{id}
-| Código | Descrição                                           |
-|--------|-----------------------------------------------------|
-| 204    | Caso a empresa seja deletada com sucesso            |
-| 404    | Caso a empresa com o id enviado não seja encontrada |
+| Código | Descrição                                                        |
+|--------|------------------------------------------------------------------|
+| 204    | Caso a empresa seja deletada com sucesso                         |
+| 404    | Caso a empresa com o id enviado não seja encontrada              | 
 
 ## <a id="usuario"></a>Usuario
 

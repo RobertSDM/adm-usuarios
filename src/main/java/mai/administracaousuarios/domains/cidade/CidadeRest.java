@@ -33,17 +33,17 @@ public class CidadeRest {
             System.out.println(e.getMessage());
             return ResponseEntity.notFound().build();
         }
-
     }
 
     @PutMapping(value = "/update/{id}")
     public ResponseEntity put(@PathVariable String id, @RequestBody Cidade body) {
-        try{
+
+        try {
             Cidade cidade = cidadeRep.findById(id).get();
             cidade.setNome(body.getNome());
             cidadeRep.save(cidade);
             return ResponseEntity.ok().body(cidade);
-        }catch(NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             System.out.println(e.getMessage());
             return ResponseEntity.notFound().build();
         }

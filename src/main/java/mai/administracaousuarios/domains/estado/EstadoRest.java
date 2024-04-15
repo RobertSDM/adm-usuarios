@@ -2,6 +2,7 @@ package mai.administracaousuarios.domains.estado;
 
 import mai.administracaousuarios.repositories.EstadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,7 +26,7 @@ public class EstadoRest {
     }
 
     @GetMapping(value = "/find/{id}")
-    public ResponseEntity<Estado> findById(@PathVariable String id) {
+    public ResponseEntity findById(@PathVariable String id) {
         try {
             Estado estado = estadoRep.findById(id).get();
             return ResponseEntity.ok().body(estado);
@@ -33,7 +34,6 @@ public class EstadoRest {
             System.out.println(e.getMessage());
             return ResponseEntity.notFound().build();
         }
-
     }
 
     @PutMapping(value = "/update/{id}")

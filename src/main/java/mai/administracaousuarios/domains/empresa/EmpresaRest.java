@@ -51,8 +51,13 @@ public class EmpresaRest {
 
     @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity delete(@PathVariable String id) {
-        empresaRep.deleteById(id);
-        return ResponseEntity.noContent().build();
+        try{
+            empresaRep.findById(id).get();
+            empresaRep.deleteById(id);
+            return ResponseEntity.noContent().build();
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PutMapping(value = "/update/{id}")

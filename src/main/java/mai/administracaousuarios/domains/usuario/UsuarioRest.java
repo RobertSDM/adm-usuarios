@@ -38,24 +38,13 @@ public class UsuarioRest {
     }
 
     @PutMapping(value = "/update/{id}")
-    public ResponseEntity<Usuario> put(@PathVariable String id,@RequestParam(defaultValue = "login") String type, @RequestBody Usuario body) {
+    public ResponseEntity<Usuario> put(@PathVariable String id, @RequestBody Usuario body) {
         try{
             Usuario usuario = usuarioRep.findById(id).get();
             ArrayList<String> encrypt = Encrypt.encryptPassword(body.getSenha());
-            switch (type) {
-                case "all":
-                    usuario.setSenha(encrypt.get(0));
-                    usuario.setSalt(encrypt.get(1));
-                    usuario.setLogin(body.getLogin());
-                    break;
-                case "password":
-                    usuario.setSenha(encrypt.get(0));
-                    usuario.setSalt(encrypt.get(1));
-                    break;
-                case "login":
-                    usuario.setLogin(body.getLogin());
-                    break;
-            }
+            usuario.setLogin(body.getLogin());
+            usuario.setSenha(encrypt.get(0));
+            usuario.setSalt(encrypt.get(1));
             usuarioRep.save(usuario);
             return ResponseEntity.ok().body(usuario);
         }catch(NoSuchElementException e){

@@ -1,4 +1,4 @@
-package mai.administracaousuarios.domains.usuario;
+package mai.administracaousuarios.domains;
 
 import jakarta.persistence.*;
 

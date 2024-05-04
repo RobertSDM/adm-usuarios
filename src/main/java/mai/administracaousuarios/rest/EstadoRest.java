@@ -1,8 +1,8 @@
-package mai.administracaousuarios.domains.estado;
+package mai.administracaousuarios.rest;
 
+import mai.administracaousuarios.domains.Estado;
 import mai.administracaousuarios.repositories.EstadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

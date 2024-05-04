@@ -1,8 +1,6 @@
-package mai.administracaousuarios.domains.estado;
+package mai.administracaousuarios.domains;
 
 import jakarta.persistence.*;
-
-import java.util.List;
 
 @Entity
 @Table(name = "tb_mai_estado")

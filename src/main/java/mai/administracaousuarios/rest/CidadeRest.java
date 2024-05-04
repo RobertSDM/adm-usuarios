@@ -1,5 +1,6 @@
-package mai.administracaousuarios.domains.cidade;
+package mai.administracaousuarios.rest;
 
+import mai.administracaousuarios.domains.Cidade;
 import mai.administracaousuarios.repositories.CidadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -1,5 +1,6 @@
-package mai.administracaousuarios.domains.logradouro;
+package mai.administracaousuarios.rest;
 
+import mai.administracaousuarios.domains.Logradouro;
 import mai.administracaousuarios.repositories.LogradouroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

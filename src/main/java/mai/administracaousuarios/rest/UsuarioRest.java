@@ -1,5 +1,6 @@
-package mai.administracaousuarios.domains.usuario;
+package mai.administracaousuarios.rest;
 
+import mai.administracaousuarios.domains.Usuario;
 import mai.administracaousuarios.repositories.UsuarioRepository;
 import mai.administracaousuarios.security.Encrypt;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -37,7 +37,7 @@ public class CidadeRest {
     }
 
     @PutMapping(value = "/update/{id}")
-    public ResponseEntity put(@PathVariable String id, @RequestBody Cidade body) {
+    public ResponseEntity<Cidade> put(@PathVariable String id, @RequestBody Cidade body) {
 
         try {
             Cidade cidade = cidadeRep.findById(id).get();

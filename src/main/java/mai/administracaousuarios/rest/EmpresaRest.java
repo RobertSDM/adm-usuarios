@@ -51,7 +51,7 @@ public class EmpresaRest {
     }
 
     @DeleteMapping(value = "/delete/{id}")
-    public ResponseEntity delete(@PathVariable String id) {
+    public ResponseEntity<Empresa> delete(@PathVariable String id) {
         try{
             empresaRep.findById(id).get();
             empresaRep.deleteById(id);
@@ -62,7 +62,7 @@ public class EmpresaRest {
     }
 
     @PutMapping(value = "/update/{id}")
-    public ResponseEntity update(@PathVariable String id, @RequestBody Empresa body) {
+    public ResponseEntity<Empresa> update(@PathVariable String id, @RequestBody Empresa body) {
         try{
             Empresa empresa = empresaRep.findById(id).get();
 

@@ -26,7 +26,7 @@ public class EstadoRest {
     }
 
     @GetMapping(value = "/find/{id}")
-    public ResponseEntity findById(@PathVariable String id) {
+    public ResponseEntity<Estado> findById(@PathVariable String id) {
         try {
             Estado estado = estadoRep.findById(id).get();
             return ResponseEntity.ok().body(estado);

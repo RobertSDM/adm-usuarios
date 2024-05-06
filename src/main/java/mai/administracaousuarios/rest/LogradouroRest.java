@@ -38,7 +38,7 @@ public class LogradouroRest {
     }
 
     @PutMapping(value = "/update/{id}")
-    public ResponseEntity put(@PathVariable String id, @RequestBody Logradouro body) {
+    public ResponseEntity<Logradouro> put(@PathVariable String id, @RequestBody Logradouro body) {
         try{
             Logradouro logradouro = logradouroRep.findById(id).get();
             logradouro.setCep(body.getCep());

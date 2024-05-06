@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 
 @Component
-public class Middleware implements Filter {
+public class authenticationFilter implements Filter {
 
 
 

@@ -7,9 +7,6 @@ import org.springframework.security.crypto.keygen.KeyGenerators;
 import java.util.ArrayList;
 
 public class Encrypt {
-    public Encrypt() {
-    }
-
     public static ArrayList<String> encryptPassword(String password){
         String salt = KeyGenerators.string().generateKey();
         TextEncryptor textEncryptor = Encryptors.text("your_password", salt);

@@ -1,9 +1,17 @@
 package mai.administracaousuarios.domains;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "tb_mai_usuario")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -15,46 +23,4 @@ public class Usuario {
     private String senha;
     @Column(name = "salt", length = 50)
     private String salt;
-
-    public Usuario() {
-    }
-
-    public Usuario(String idUsuario, String login, String senha, String salt) {
-        this.idUsuario = idUsuario;
-        this.login = login;
-        this.senha = senha;
-        this.salt = salt;
-    }
-
-    public String getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(String idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    public String getSalt() {
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
 }

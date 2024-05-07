@@ -23,13 +23,12 @@ public class authenticationFilter implements Filter {
         String password;
 
         try{
-            login = request.getHeaders("Api_Login").nextElement();
-            password = request.getHeaders("Api_Password").nextElement();
+            login = request.getHeaders("Api-Login").nextElement();
+            password = request.getHeaders("Api-Password").nextElement();
 
 
 
         }catch (NullPointerException e){
-            System.out.println(e.getMessage());
             ((HttpServletResponse) servletResponse).setStatus(422);
             servletResponse.getOutputStream().write("Missing the api login or password".getBytes());
             return;

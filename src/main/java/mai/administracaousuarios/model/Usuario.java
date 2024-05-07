@@ -20,9 +20,11 @@ public class Usuario {
     @Column(name = "id_usuario", length = 50)
     private String idUsuario;
     @Column(name = "login", length = 30, nullable = false, unique = true)
+    @Size(max = 30, min = 4, message = "The login size must be between 4 and 30")
+    @NotEmpty(message = "The attribute login cannot be null or blank")
     private String login;
-    @Column(name = "senha", nullable = false)
+    @Column(name = "senha",length = 100, nullable = false)
     private String senha;
-    @Column(name = "salt", length = 50)
+    @Column(name = "salt", length = 20, nullable = false)
     private String salt;
 }

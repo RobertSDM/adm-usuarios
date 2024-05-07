@@ -49,8 +49,21 @@ public class UsuarioRest {
             usuarioRep.save(usuario);
             return ResponseEntity.ok().body(usuario);
         }catch(NoSuchElementException e){
-            System.out.println(e.getMessage());
+            logger.error(e.getMessage());
             return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/validar-usuario")
+    public ResponseEntity<String> validar(@RequestBody Usuario body) {
+        Usuario usuarioBanco = usuarioRep.findByLogin(body.getLogin());
+
+        Boolean valid = Encrypt.validatePassword(body.getSenha(), usuarioBanco.getSalt(), usuarioBanco.getSenha());
+
+        if(valid){
+            return ResponseEntity.ok().body("valid");
+        }else{
+            return ResponseEntity.unprocessableEntity().body("invalid");
         }
     }
 }

@@ -1,7 +1,11 @@
 package mai.administracaousuarios.rest;
 
-import mai.administracaousuarios.domains.Cidade;
+import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
+import mai.administracaousuarios.model.Cidade;
 import mai.administracaousuarios.repositories.CidadeRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +19,7 @@ public class CidadeRest {
 
     @Autowired
     private CidadeRepository cidadeRep;
+    private final Logger logger = LoggerFactory.getLogger(Slf4j.class);
 
     @GetMapping(value = "/find/all")
     public ResponseEntity<List<Cidade>> findAll() {
@@ -31,13 +36,13 @@ public class CidadeRest {
             Cidade cidade = cidadeRep.findById(id).get();
             return ResponseEntity.ok().body(cidade);
         } catch (NoSuchElementException e) {
-            System.out.println(e.getMessage());
+            logger.error(e.getMessage());
             return ResponseEntity.notFound().build();
         }
     }
 
     @PutMapping(value = "/update/{id}")
-    public ResponseEntity<Cidade> put(@PathVariable String id, @RequestBody Cidade body) {
+    public ResponseEntity<Cidade> put(@PathVariable String id, @Valid @RequestBody Cidade body) {
 
         try {
             Cidade cidade = cidadeRep.findById(id).get();
@@ -45,7 +50,7 @@ public class CidadeRest {
             cidadeRep.save(cidade);
             return ResponseEntity.ok().body(cidade);
         } catch (NoSuchElementException e) {
-            System.out.println(e.getMessage());
+            logger.error(e.getMessage());
             return ResponseEntity.notFound().build();
         }
     }

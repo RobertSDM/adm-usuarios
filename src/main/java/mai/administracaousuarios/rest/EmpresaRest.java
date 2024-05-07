@@ -1,8 +1,12 @@
 package mai.administracaousuarios.rest;
 
-import mai.administracaousuarios.domains.Empresa;
+import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
+import mai.administracaousuarios.model.Empresa;
 import mai.administracaousuarios.repositories.EmpresaRepository;
 import mai.administracaousuarios.security.Encrypt;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +21,7 @@ public class EmpresaRest {
     @Autowired()
     private EmpresaRepository empresaRep;
 
+    private final Logger logger = LoggerFactory.getLogger(Slf4j.class);
 
     @GetMapping(value = "/find/all")
     public ResponseEntity<List<Empresa>> findAll() {
@@ -33,14 +38,14 @@ public class EmpresaRest {
             Empresa empresa = empresaRep.findById(id).get();
             return ResponseEntity.ok().body(empresa);
         } catch (NoSuchElementException e) {
-            System.out.println(e.getMessage());
+            logger.error(e.getMessage());
             return ResponseEntity.notFound().build();
         }
 
     }
 
     @PostMapping(value = "/create")
-    public ResponseEntity<Empresa> create(@RequestBody Empresa body) {
+    public ResponseEntity<Empresa> create(@Valid @RequestBody Empresa body) {
         ArrayList<String> encrypted = Encrypt.encryptPassword(body.getUsuario().getSenha());
 
         body.getUsuario().setSenha(encrypted.get(0));
@@ -57,12 +62,13 @@ public class EmpresaRest {
             empresaRep.deleteById(id);
             return ResponseEntity.noContent().build();
         } catch (NoSuchElementException e) {
+            logger.error(e.getMessage());
             return ResponseEntity.notFound().build();
         }
     }
 
     @PutMapping(value = "/update/{id}")
-    public ResponseEntity<Empresa> update(@PathVariable String id, @RequestBody Empresa body) {
+    public ResponseEntity<Empresa> update(@PathVariable String id, @Valid @RequestBody Empresa body) {
         try{
             Empresa empresa = empresaRep.findById(id).get();
 
@@ -72,7 +78,7 @@ public class EmpresaRest {
             empresaRep.save(empresa);
             return ResponseEntity.ok(empresa);
         }catch(NoSuchElementException e){
-            System.out.println(e.getMessage());
+            logger.error(e.getMessage());
             return ResponseEntity.notFound().build();
         }
     }

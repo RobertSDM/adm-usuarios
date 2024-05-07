@@ -1,8 +1,12 @@
 package mai.administracaousuarios.rest;
 
-import mai.administracaousuarios.domains.Usuario;
+import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
+import mai.administracaousuarios.model.Usuario;
 import mai.administracaousuarios.repositories.UsuarioRepository;
 import mai.administracaousuarios.security.Encrypt;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +21,8 @@ public class UsuarioRest {
 
     @Autowired
     private UsuarioRepository usuarioRep;
+
+    private final Logger logger = LoggerFactory.getLogger(Slf4j.class);
 
     @GetMapping(value = "/find/all")
     public ResponseEntity<List<Usuario>> findAll() {
@@ -33,13 +39,13 @@ public class UsuarioRest {
             Usuario  usuario = usuarioRep.findById(id).get();
             return ResponseEntity.ok().body(usuario);
         } catch (NoSuchElementException e) {
-            System.out.println(e.getMessage());
+            logger.error(e.getMessage());
             return ResponseEntity.notFound().build();
         }
     }
 
     @PutMapping(value = "/update/{id}")
-    public ResponseEntity<Usuario> put(@PathVariable String id, @RequestBody Usuario body) {
+    public ResponseEntity<Usuario> put(@PathVariable String id, @Valid @RequestBody Usuario body) {
         try{
             Usuario usuario = usuarioRep.findById(id).get();
             ArrayList<String> encrypt = Encrypt.encryptPassword(body.getSenha());

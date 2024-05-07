@@ -1,7 +1,11 @@
 package mai.administracaousuarios.rest;
 
-import mai.administracaousuarios.domains.Logradouro;
+import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
+import mai.administracaousuarios.model.Logradouro;
 import mai.administracaousuarios.repositories.LogradouroRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +19,7 @@ public class LogradouroRest {
 
     @Autowired
     private LogradouroRepository logradouroRep;
+    private final Logger logger = LoggerFactory.getLogger(Slf4j.class);
 
     @GetMapping(value = "/find/all")
     public ResponseEntity<List<Logradouro>> findAll() {
@@ -31,21 +36,21 @@ public class LogradouroRest {
             Logradouro logradouro = logradouroRep.findById(id).get();
             return ResponseEntity.ok().body(logradouro);
         } catch (NoSuchElementException e) {
-            System.out.println(e.getMessage());
+            logger.error(e.getMessage());
             return ResponseEntity.notFound().build();
         }
 
     }
 
     @PutMapping(value = "/update/{id}")
-    public ResponseEntity<Logradouro> put(@PathVariable String id, @RequestBody Logradouro body) {
+    public ResponseEntity<Logradouro> put(@PathVariable String id, @Valid @RequestBody Logradouro body) {
         try{
             Logradouro logradouro = logradouroRep.findById(id).get();
             logradouro.setCep(body.getCep());
             logradouroRep.save(logradouro);
             return ResponseEntity.ok().body(logradouro);
         }catch(NoSuchElementException e){
-            System.out.println(e.getMessage());
+            logger.error(e.getMessage());
             return ResponseEntity.notFound().build();
         }
     }

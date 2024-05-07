@@ -43,14 +43,19 @@ Diagrama de relacionamento
 
 # Documentação API
 
-### Pricipais rotas
-1. [Empresa](#empresa)
-2. [Usuario](#usuario)
-3. [Logradouro](#logradouro)
-4. [Cidade](#cidade)
-5. [Estado](#estado)
+## <a id="filtro_autenticacao"></a> Filtro de autenticação da API
+| Código | Descrição                                       |
+|--------|-------------------------------------------------|
+| 422    | Caso os headers de login e de senha não existam |
+| 401    | Caso a senha ou o login não sejam válidos       |
+
 
 ## <a id="empresa"></a>Empresa
+### Pricipais rotas
+1. [Usuario](#usuario)
+2. [Logradouro](#logradouro)
+3. [Cidade](#cidade)
+4. [Estado](#estado)
 
 `GET`
 
@@ -90,6 +95,12 @@ Diagrama de relacionamento
 | 404    | Caso a empresa com o id enviado não seja encontrada              | 
 
 ## <a id="usuario"></a>Usuario
+### Pricipais rotas
+1. [Filtro de autenticação](#filtro_autenticacao)
+2. [Empresa](#empresa)
+3. [Logradouro](#logradouro)
+4. [Cidade](#cidade)
+5. [Estado](#estado)
 
 `GET`
 
@@ -114,6 +125,12 @@ Diagrama de relacionamento
 | 404    | Caso o usuario com o id enviado não seja encontrado |
 
 ## <a id="logradouro"></a>Logradouro
+### Pricipais rotas
+1. [Filtro de autenticação](#filtro_autenticacao)
+2. [Empresa](#empresa)
+3. [Usuario](#usuario)
+5. [Cidade](#cidade)
+6. [Estado](#estado)
 
 `GET`
 
@@ -138,6 +155,12 @@ Diagrama de relacionamento
 | 404    | Caso o logradouro com o id enviado não seja encontrado |
 
 ## <a id="cidade"></a>Cidade
+### Pricipais rotas
+1. [Filtro de autenticação](#filtro_autenticacao)
+2. [Empresa](#empresa)
+3. [Usuario](#usuario)
+4. [Logradouro](#logradouro)
+5. [Estado](#estado)
 
 `GET`
 
@@ -163,6 +186,12 @@ Diagrama de relacionamento
 | 404    | Caso a cidade com o id enviado não seja encontrada |
 
 ## <a id="estado"></a>Estado
+### Pricipais rotas
+1. [Filtro de autenticação](#filtro_autenticacao)
+2. [Empresa](#empresa)
+3. [Usuario](#usuario)
+4. [Logradouro](#logradouro)
+5. [Cidade](#cidade)
 
 `GET`
 

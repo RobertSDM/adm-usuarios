@@ -1,6 +1,7 @@
-package mai.administracaousuarios.domains;
+package mai.administracaousuarios.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,9 +20,11 @@ public class Cidade {
     private String idCidade;
     @Setter
     @Column(name = "nm_cidade", length = 50)
+    @NotNull(message = "The attribute cannot be null")
     private String nome;
     @Setter
     @OneToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_estado", nullable = false)
+    @NotNull(message = "The attribute cannot be null")
     private Estado estado;
 }

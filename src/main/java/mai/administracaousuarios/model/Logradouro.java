@@ -1,6 +1,9 @@
-package mai.administracaousuarios.domains;
+package mai.administracaousuarios.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,9 +21,12 @@ public class Logradouro {
     private String idLogradouro;
     @Setter
     @Column(name = "nr_cep", length = 8, nullable = false)
+    @NotEmpty(message = "The attribute cep cannot be null or blank")
+    @Size(max = 8, min = 8, message = "The cep size must be 8")
     private String cep;
     @Setter
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_cidade")
+    @NotNull(message = "The attribute cidade cannot be null or blank")
     private Cidade cidade;
 }

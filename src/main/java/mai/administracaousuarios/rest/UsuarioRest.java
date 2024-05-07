@@ -1,10 +1,10 @@
 package mai.administracaousuarios.rest;
 
 import jakarta.validation.Valid;
-import lombok.extern.slf4j.Slf4j;
 import mai.administracaousuarios.model.Usuario;
 import mai.administracaousuarios.repositories.UsuarioRepository;
 import mai.administracaousuarios.security.Encrypt;
+import org.apache.logging.slf4j.SLF4JLogger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class UsuarioRest {
     @Autowired
     private UsuarioRepository usuarioRep;
 
-    private final Logger logger = LoggerFactory.getLogger(Slf4j.class);
+    private final Logger logger = LoggerFactory.getLogger(SLF4JLogger.class);
 
     @GetMapping(value = "/find/all")
     public ResponseEntity<List<Usuario>> findAll() {

@@ -1,6 +1,7 @@
 package mai.administracaousuarios.rest;
 
 import jakarta.validation.Valid;
+import mai.administracaousuarios.model.Empresa;
 import mai.administracaousuarios.model.Usuario;
 import mai.administracaousuarios.repositories.UsuarioRepository;
 import mai.administracaousuarios.security.Encrypt;
@@ -26,11 +27,24 @@ public class UsuarioRest {
 
     @GetMapping(value = "/find/all")
     public ResponseEntity<List<Usuario>> findAll() {
+
+        System.out.println("Ta na rota");
         List<Usuario> usuarios = usuarioRep.findAll();
         if(usuarios.isEmpty()){
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.ok().body(usuarios);
+    }
+
+    @PostMapping(value = "/create")
+    public ResponseEntity<Usuario> create(@Valid @RequestBody Usuario body) {
+        ArrayList<String> encrypted = Encrypt.encryptPassword(body.getSenha());
+
+        body.setSenha(encrypted.get(0));
+        body.setSalt(encrypted.get(1));
+
+        Usuario usuario = usuarioRep.save(body);
+        return ResponseEntity.created(null).body(usuario);
     }
 
     @GetMapping(value = "/find/{id}")
@@ -57,19 +71,6 @@ public class UsuarioRest {
         }catch(NoSuchElementException e){
             logger.error(e.getMessage());
             return ResponseEntity.notFound().build();
-        }
-    }
-
-    @GetMapping("/validar-usuario")
-    public ResponseEntity<String> validar(@RequestBody Usuario body) {
-        Usuario usuarioBanco = usuarioRep.findByLogin(body.getLogin());
-
-        Boolean valid = Encrypt.validatePassword(body.getSenha(), usuarioBanco.getSalt(), usuarioBanco.getSenha());
-
-        if(valid){
-            return ResponseEntity.ok().body("valid");
-        }else{
-            return ResponseEntity.unprocessableEntity().body("invalid");
         }
     }
 }

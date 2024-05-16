@@ -45,16 +45,7 @@ public class EmpresaRest {
 
     }
 
-    @PostMapping(value = "/create")
-    public ResponseEntity<Empresa> create(@Valid @RequestBody Empresa body) {
-        ArrayList<String> encrypted = Encrypt.encryptPassword(body.getUsuario().getSenha());
 
-        body.getUsuario().setSenha(encrypted.get(0));
-        body.getUsuario().setSalt(encrypted.get(1));
-
-        Empresa empresa = empresaRep.save(body);
-        return ResponseEntity.created(null).body(empresa);
-    }
 
     @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity<Empresa> delete(@PathVariable String id) {

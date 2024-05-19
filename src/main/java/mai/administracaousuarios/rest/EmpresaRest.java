@@ -3,7 +3,6 @@ package mai.administracaousuarios.rest;
 import jakarta.validation.Valid;
 import mai.administracaousuarios.model.Empresa;
 import mai.administracaousuarios.repositories.EmpresaRepository;
-import mai.administracaousuarios.security.Encrypt;
 import org.apache.logging.slf4j.SLF4JLogger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -44,8 +42,6 @@ public class EmpresaRest {
         }
 
     }
-
-
 
     @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity<Empresa> delete(@PathVariable String id) {

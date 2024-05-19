@@ -1,7 +1,6 @@
 package mai.administracaousuarios.rest;
 
 import jakarta.validation.Valid;
-import mai.administracaousuarios.model.Empresa;
 import mai.administracaousuarios.model.Usuario;
 import mai.administracaousuarios.repositories.UsuarioRepository;
 import mai.administracaousuarios.security.Encrypt;
@@ -45,6 +44,19 @@ public class UsuarioRest {
 
         Usuario usuario = usuarioRep.save(body);
         return ResponseEntity.created(null).body(usuario);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Usuario> delete(@PathVariable String id) {
+        try{
+            usuarioRep.findById(id).get();
+            usuarioRep.deleteById(id);
+
+            return ResponseEntity.noContent().build();
+        } catch (NoSuchElementException e) {
+            logger.error(e.getMessage());
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @GetMapping(value = "/find/{id}")

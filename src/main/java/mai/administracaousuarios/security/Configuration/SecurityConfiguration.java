@@ -30,8 +30,12 @@ public class SecurityConfiguration {
         return http.csrf(crfs -> crfs.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(HttpMethod.POST, "/register", "/usuario/update/**", "/usuario/create/**", "/cidade/update/**", "/estado/update/**", "/empresa/delete/**", "/empresa/update/**").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.POST, "/login").permitAll())
+                        .requestMatchers(HttpMethod.POST, "/register",  "/usuario/create/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE,  "/usuario/delete/**", "/empresa/delete/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/usuario/update/**",  "/cidade/update/**", "/estado/update/**", "/empresa/update/**", "/logradouro/update/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/login").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/usuario/find/**", "/empresa/find/**", "/estado/find/**", "/usuario/find/**", "/cidade/find/**", "/logradouro/find/**").permitAll()
+                        .anyRequest().authenticated())
                 .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }

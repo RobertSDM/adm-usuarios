@@ -1,6 +1,6 @@
 package mai.administracaousuarios.security.Configuration;
 
-import mai.administracaousuarios.interceptor.AuthFilter;
+import mai.administracaousuarios.filter.AuthFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +17,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfiguration {
+public class SecurityConfig {
 
     @Autowired
     private AuthFilter authFilter;
@@ -34,7 +34,7 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.DELETE,  "/usuario/delete/**", "/empresa/delete/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/usuario/update/**",  "/cidade/update/**", "/estado/update/**", "/empresa/update/**", "/logradouro/update/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST, "/login").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/usuario/find/**", "/empresa/find/**", "/estado/find/**", "/usuario/find/**", "/cidade/find/**", "/logradouro/find/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/usuario/find/**","/swagger-ui/**","/v3/api-docs/**", "/empresa/find/**", "/estado/find/**", "/usuario/find/**", "/cidade/find/**", "/logradouro/find/**").permitAll()
                         .anyRequest().authenticated())
                 .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();

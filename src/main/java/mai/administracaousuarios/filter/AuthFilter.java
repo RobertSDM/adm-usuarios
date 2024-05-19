@@ -1,4 +1,4 @@
-package mai.administracaousuarios.interceptor;
+package mai.administracaousuarios.filter;
 
 
 import jakarta.servlet.*;
@@ -43,7 +43,6 @@ public class AuthFilter extends OncePerRequestFilter {
 
         }
 
-        System.out.println("INDO PRA ROTA");
         filterChain.doFilter(request, response);
     }
 

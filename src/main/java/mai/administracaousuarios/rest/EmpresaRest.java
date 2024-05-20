@@ -3,10 +3,6 @@ package mai.administracaousuarios.rest;
 import jakarta.validation.Valid;
 import mai.administracaousuarios.model.Empresa;
 import mai.administracaousuarios.repositories.EmpresaRepository;
-<<<<<<< HEAD
-import mai.administracaousuarios.security.Encrypt;
-=======
->>>>>>> master
 import org.apache.logging.slf4j.SLF4JLogger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,10 +20,6 @@ public class EmpresaRest {
     private EmpresaRepository empresaRep;
 
     private final Logger logger = LoggerFactory.getLogger(SLF4JLogger.class);
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 
     @GetMapping(value = "/find/all")
     public ResponseEntity<List<Empresa>> findAll() {

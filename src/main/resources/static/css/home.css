@@ -1,0 +1,51 @@
+@import url("main.css");
+
+:root {
+    --side-bar-width: 14rem;
+    --side-bar__header-height: 4rem;
+}
+
+.side-bar {
+    /* POSITIONS */
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* PROPORTIONS*/
+    height: 100dvh;
+    width: var(--side-bar-width);
+    padding: 0 1rem 0 1rem;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.side-bar__header {
+    /* POSITIONS */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* PROPORTIONS */
+    height: var(--side-bar__header-height);
+    width: 100%;
+}
+
+.header__nav {
+    /* POSITIONS */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 3.5rem;
+}
+
+.main-content-view {
+    /* POSITIONS */
+    display: flex;
+    row-gap: 1rem;
+    flex-direction: column;
+    margin-left: calc(var(--side-bar-width) + 2rem);
+    position: relative;
+    padding: 1.2rem 5rem 0 0;
+    /**/
+}
+
+.main-content-view__main {
+}
+

@@ -30,11 +30,11 @@ public class SecurityConfig {
         return http.csrf(crfs -> crfs.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(HttpMethod.POST, "/register",  "/usuario/create/**").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.DELETE,  "/usuario/delete/**", "/empresa/delete/**").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.PUT, "/usuario/update/**",  "/cidade/update/**", "/estado/update/**", "/empresa/update/**", "/logradouro/update/**").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.POST, "/login").permitAll()
                         .requestMatchers(HttpMethod.GET, "/usuario/find/**","/swagger-ui/**","/v3/api-docs/**", "/empresa/find/**", "/estado/find/**", "/usuario/find/**", "/cidade/find/**", "/logradouro/find/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/register",  "/usuario/create/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/login").permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/usuario/update/**",  "/cidade/update/**", "/estado/update/**", "/empresa/update/**", "/logradouro/update/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE,  "/usuario/delete/**", "/empresa/delete/**").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();

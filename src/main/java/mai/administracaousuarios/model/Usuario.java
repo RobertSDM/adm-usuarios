@@ -35,6 +35,7 @@ public class Usuario implements UserDetails {
     @Column(name = "salt", length = 20, nullable = false)
     private String salt;
     @Column(name = "role", length = 10, nullable = false)
+    @Enumerated(EnumType.STRING)
     private Roles role;
 
     @Override

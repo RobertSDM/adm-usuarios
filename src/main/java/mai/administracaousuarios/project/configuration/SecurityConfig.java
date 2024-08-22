@@ -1,6 +1,6 @@
-package mai.administracaousuarios.security.Configuration;
+package mai.administracaousuarios.project.configuration;
 
-import mai.administracaousuarios.filter.AuthFilter;
+import mai.administracaousuarios.api.middleware.AuthFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

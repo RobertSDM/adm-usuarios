@@ -1,9 +1,9 @@
-package mai.administracaousuarios.rest;
+package mai.administracaousuarios.api.route;
 
 import jakarta.validation.Valid;
 import mai.administracaousuarios.model.Usuario;
-import mai.administracaousuarios.repositories.UsuarioRepository;
-import mai.administracaousuarios.security.Encrypt;
+import mai.administracaousuarios.repository.UsuarioRepository;
+import mai.administracaousuarios.project.security.Encrypt;
 import org.apache.logging.slf4j.SLF4JLogger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

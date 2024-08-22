@@ -1,11 +1,8 @@
-package mai.administracaousuarios.repositories;
+package mai.administracaousuarios.repository;
 
 import mai.administracaousuarios.model.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, String> {

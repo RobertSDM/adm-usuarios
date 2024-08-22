@@ -1,4 +1,4 @@
-package mai.administracaousuarios.security;
+package mai.administracaousuarios.service;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;

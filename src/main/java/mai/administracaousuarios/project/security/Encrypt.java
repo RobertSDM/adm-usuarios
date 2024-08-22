@@ -1,4 +1,4 @@
-package mai.administracaousuarios.security;
+package mai.administracaousuarios.project.security;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.keygen.KeyGenerators;

@@ -1,12 +1,12 @@
-package mai.administracaousuarios.filter;
+package mai.administracaousuarios.api.middleware;
 
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import mai.administracaousuarios.model.Usuario;
-import mai.administracaousuarios.repositories.UsuarioRepository;
-import mai.administracaousuarios.security.TokenService;
+import mai.administracaousuarios.repository.UsuarioRepository;
+import mai.administracaousuarios.service.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;

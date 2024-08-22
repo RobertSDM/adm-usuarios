@@ -1,4 +1,4 @@
-package mai.administracaousuarios.repositories;
+package mai.administracaousuarios.repository;
 
 import mai.administracaousuarios.model.Empresa;
 import org.springframework.data.jpa.repository.JpaRepository;

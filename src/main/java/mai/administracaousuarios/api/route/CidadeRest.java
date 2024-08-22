@@ -1,8 +1,8 @@
-package mai.administracaousuarios.rest;
+package mai.administracaousuarios.api.route;
 
 import jakarta.validation.Valid;
 import mai.administracaousuarios.model.Cidade;
-import mai.administracaousuarios.repositories.CidadeRepository;
+import mai.administracaousuarios.repository.CidadeRepository;
 import org.apache.logging.slf4j.SLF4JLogger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

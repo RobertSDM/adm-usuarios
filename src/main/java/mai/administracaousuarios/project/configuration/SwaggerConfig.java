@@ -1,4 +1,4 @@
-package mai.administracaousuarios.security.Configuration;
+package mai.administracaousuarios.project.configuration;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;

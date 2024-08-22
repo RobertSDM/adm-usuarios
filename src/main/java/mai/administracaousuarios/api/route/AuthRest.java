@@ -1,12 +1,12 @@
-package mai.administracaousuarios.rest;
+package mai.administracaousuarios.api.route;
 
 import jakarta.validation.Valid;
 import mai.administracaousuarios.model.Empresa;
 import mai.administracaousuarios.model.Usuario;
-import mai.administracaousuarios.repositories.EmpresaRepository;
-import mai.administracaousuarios.repositories.UsuarioRepository;
-import mai.administracaousuarios.security.Encrypt;
-import mai.administracaousuarios.security.TokenService;
+import mai.administracaousuarios.repository.EmpresaRepository;
+import mai.administracaousuarios.repository.UsuarioRepository;
+import mai.administracaousuarios.project.security.Encrypt;
+import mai.administracaousuarios.service.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

@@ -18,3 +18,7 @@ body {
     width: 100dvw;
     height: 100dvh;
 }
+
+.debug{
+    border: 1px solid black;
+}

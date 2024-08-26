@@ -41,10 +41,10 @@ Agora com todas as configurações necessarias feitas, basta rodar o projeto.
 ## Diagramas
 
 Diagrama de entidades \
-![Diagrama de entidades](./images/Diagrama_de_classes.jpeg)
+![Diagrama de entidades](assets/images/Diagrama_de_classes.jpeg)
 
 Diagrama de relacionamento \
-![Diagrama de relacionamento](./images/Diagrama_relacional.svg)
+![Diagrama de relacionamento](assets/images/Diagrama_relacional.svg)
 
 ## Video descrevendo projeto
 [Video de apresentação do projeto](https://youtu.be/ntipsKUMlzE)

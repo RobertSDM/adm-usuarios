@@ -1,5 +1,5 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -16,19 +16,47 @@
             <section class="header__nav__right-side">02</section>
         </header>
         <nav class="header__nav">
-            <a>Home</a>
-            <a>Parcerias</a>
+            <a href="" th:classappend="${#httpServletRequest.getRequestURI == '/'} ? 'link-active' : ''">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg"
+                     height="24px" viewBox="0 -960 960 960"
+                     width="24px" fill="currentColor">
+                    <path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"/>
+                </svg>
+                Home
+            </a>
+            <a href="">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                     fill="#e8eaed">
+                    <path d="M480-340q33 0 56.5-23.5T560-420q0-33-23.5-56.5T480-500q-33 0-56.5 23.5T400-420q0 33 23.5 56.5T480-340ZM160-120q-33 0-56.5-23.5T80-200v-440q0-33 23.5-56.5T160-720h160v-80q0-33 23.5-56.5T400-880h160q33 0 56.5 23.5T640-800v80h160q33 0 56.5 23.5T880-640v440q0 33-23.5 56.5T800-120H160Zm0-80h640v-440H160v440Zm240-520h160v-80H400v80ZM160-200v-440 440Z"/>
+                </svg>
+                Empresas</a>
         </nav>
     </div>
     <footer class="side-bar__footer">
-        <p>
-            MAI
-        </p>
+        <svg class="icon" viewBox="0 0 471 466" fill="currentColor"
+             xmlns="http://www.w3.org/2000/svg">
+            <path d="M0.642663 300.776L65.0645 37.0633C66.7245 30.2681 74.6692 27.2332 80.4369 31.1909L301.825 183.106C305.243 185.451 306.859 189.662 305.889 193.692L242.394 457.405C240.755 464.211 232.81 467.27 227.03 463.32L4.71511 311.405C1.27673 309.056 -0.345588 304.821 0.642663 300.776Z"
+                  fill="currentColor" fill-opacity="0.5"/>
+            <path d="M395.001 225.57L237.357 4.56488C233.295 -1.12979 224.792 -1.00135 220.904 4.81339L71.6574 228.009C69.3532 231.455 69.4138 235.965 71.8098 239.347L228.592 460.696C232.639 466.409 241.152 466.303 245.055 460.491L395.161 236.951C397.483 233.494 397.419 228.96 395.001 225.57Z"
+                  fill="currentColor" fill-opacity="0.5"/>
+            <path d="M470.357 300.276L405.936 36.5633C404.276 29.7681 396.331 26.7332 390.563 30.6909L169.175 182.606C165.758 184.951 164.141 189.162 165.111 193.192L228.606 456.905C230.245 463.711 238.19 466.77 243.97 462.82L466.285 310.905C469.723 308.556 471.346 304.321 470.357 300.276Z"
+                  fill="currentColor" fill-opacity="0.5"/>
+        </svg>
     </footer>
 </aside>
-<section class="main-content-view">
-    <h1 class="page-title">Administração Empresas</h1>
-    <main class="main-content-view__main">
+<section class="main-content-view ">
+    <main class="main-content-view__main debug">
+        <section class="main__primary-content debug">
+            profile-view
+        </section>
+        <section class="main__secondary-content ">
+            <div class="secondary-content__info debug">
+                information
+            </div>
+            <aside class="secondary-content__side-info debug">
+                side-information
+            </aside>
+        </section>
     </main>
 </section>
 </body>

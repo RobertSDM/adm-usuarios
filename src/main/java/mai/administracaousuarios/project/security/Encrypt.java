@@ -6,16 +6,12 @@ import org.springframework.security.crypto.keygen.KeyGenerators;
 import java.util.ArrayList;
 
 public class Encrypt {
-    public static ArrayList<String> encryptPassword(String password){
+    public static String[] encryptPassword(String password){
         String salt = KeyGenerators.string().generateKey();
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String encryptedPass = encoder.encode(password + salt);
 
-        ArrayList<String> _return = new ArrayList<String>(2);
-        _return.add(encryptedPass);
-        _return.add(salt);
-
-        return _return;
+        return new String[]{encryptedPass, salt};
     }
 
     public static Boolean validatePassword(String sentPassword, String salt, String originalPassword){

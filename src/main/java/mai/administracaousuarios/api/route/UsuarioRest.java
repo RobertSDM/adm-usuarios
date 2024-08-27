@@ -27,7 +27,6 @@ public class UsuarioRest {
     @GetMapping(value = "/find/all")
     public ResponseEntity<List<Usuario>> findAll() {
 
-        System.out.println("Ta na rota");
         List<Usuario> usuarios = usuarioRep.findAll();
         if(usuarios.isEmpty()){
             return ResponseEntity.noContent().build();
@@ -37,10 +36,10 @@ public class UsuarioRest {
 
     @PostMapping(value = "/create")
     public ResponseEntity<Usuario> create(@Valid @RequestBody Usuario body) {
-        ArrayList<String> encrypted = Encrypt.encryptPassword(body.getSenha());
+        String[] encrypted = Encrypt.encryptPassword(body.getSenha());
 
-        body.setSenha(encrypted.get(0));
-        body.setSalt(encrypted.get(1));
+        body.setSenha(encrypted[0]);
+        body.setSalt(encrypted[1]);
 
         Usuario usuario = usuarioRep.save(body);
         return ResponseEntity.created(null).body(usuario);
@@ -74,10 +73,10 @@ public class UsuarioRest {
     public ResponseEntity<Usuario> put(@PathVariable String id, @Valid @RequestBody Usuario body) {
         try{
             Usuario usuario = usuarioRep.findById(id).get();
-            ArrayList<String> encrypt = Encrypt.encryptPassword(body.getSenha());
+            String[] encrypt = Encrypt.encryptPassword(body.getSenha());
             usuario.setLogin(body.getLogin());
-            usuario.setSenha(encrypt.get(0));
-            usuario.setSalt(encrypt.get(1));
+            usuario.setSenha(encrypt[0]);
+            usuario.setSalt(encrypt[1]);
             usuarioRep.save(usuario);
             return ResponseEntity.ok().body(usuario);
         }catch(NoSuchElementException e){

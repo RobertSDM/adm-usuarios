@@ -2,8 +2,10 @@ package mai.administracaousuarios.api.route;
 
 import jakarta.validation.Valid;
 import mai.administracaousuarios.model.Empresa;
+import mai.administracaousuarios.model.Funcionario;
 import mai.administracaousuarios.model.Usuario;
 import mai.administracaousuarios.repository.EmpresaRepository;
+import mai.administracaousuarios.repository.FuncionarioRepository;
 import mai.administracaousuarios.repository.UsuarioRepository;
 import mai.administracaousuarios.project.security.Encrypt;
 import mai.administracaousuarios.service.TokenService;
@@ -29,34 +31,47 @@ public class AuthRest {
     @Autowired
     EmpresaRepository empresaRep;
 
+    @Autowired
+    FuncionarioRepository  funcionarioRep;
+
     TokenService tokenService = new TokenService();
 
-    @PostMapping(value = "/register")
-    public ResponseEntity<Empresa> register(@Valid @RequestBody Empresa body) {
-        ArrayList<String> encrypted = Encrypt.encryptPassword(body.getUsuario().getSenha());
+    @PostMapping(value = "/register/empresa")
+    public ResponseEntity<Empresa> registerEmpresa(@Valid @RequestBody Empresa body) {
+        System.out.println(body.getNome());
 
-        body.getUsuario().setSenha(encrypted.get(0));
-        body.getUsuario().setSalt(encrypted.get(1));
+        String[] encrypted = Encrypt.encryptPassword(body.getUsuario().getSenha());
+
+        body.getUsuario().setSenha(encrypted[0]);
+        body.getUsuario().setSalt(encrypted[1]);
 
         Empresa empresa = empresaRep.save(body);
 
         return ResponseEntity.created(null).body(empresa);
     }
 
+    @PostMapping(value = "/register/funcionario")
+    public ResponseEntity<Funcionario> registerFucionario(@Valid @RequestBody Funcionario body) {
+
+        String[] encrypted = Encrypt.encryptPassword(body.getUsuario().getSenha());
+
+        body.getUsuario().setSenha(encrypted[0]);
+        body.getUsuario().setSalt(encrypted[1]);
+
+        Funcionario funcionario = funcionarioRep.save(body);
+
+        return ResponseEntity.created(null).body(funcionario);
+    }
+
     @PostMapping("/login")
     public ResponseEntity<HashMap<String, String>> login(@RequestBody  Usuario body) {
-        System.out.println("No login");
 
         Usuario usuario = usuarioRep.findByLogin(body.getLogin());
 
         UsernamePasswordAuthenticationToken userPass = new UsernamePasswordAuthenticationToken(body.getLogin(), body.getSenha() + usuario.getSalt());
         var auth = this.authenticationManager.authenticate(userPass);
 
-        System.out.println("Passou do auth");
-
         String token = tokenService.createToken((Usuario) auth.getPrincipal());
-
-        System.out.println("Criou o token");
 
         HashMap<String, String> responseMap = new HashMap<>();
         responseMap.put("token", token);

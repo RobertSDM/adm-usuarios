@@ -31,7 +31,6 @@ public class AuthFilter extends OncePerRequestFilter {
         String token = extractToken(request);
 
         if(token != null) {
-
             String login = tokenService.verifyToken(token);
             Usuario usuario = usuarioRep.findByLogin(login);
 

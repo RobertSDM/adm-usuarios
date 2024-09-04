@@ -26,14 +26,14 @@ public class Funcionario {
     private String nome;
     @Column(name = "nm_cargo")
     @NotBlank(message = "The atribute cargo cannot be null or blank")
-    @Size(max = 20, min = 5, message = "The cargo length must be between 4 and 50")
+    @Size(max = 50, min = 5, message = "The cargo length must be between 4 and 50")
     private String cargo;
     @Column(name = "nm_email")
     @NotBlank(message = "The atribute email cannot be null or blank")
     @Size(max = 50, min = 10, message = "The cargo length must be between 10 and 50")
     private String email;
     @Column(name = "img_imagem_perfil")
-    @NotBlank(message = "The atribute email cannot be null or blank")
+//    @NotBlank(message = "The atribute email cannot be null or blank")
     private String imagemPerfil;
     @OneToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_usuario")

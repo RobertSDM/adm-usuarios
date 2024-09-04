@@ -31,7 +31,7 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.GET, "/usuario/find/**","/swagger-ui/**","/v3/api-docs/**", "/empresa/find/**",
-                                "/estado/find/**", "/usuario/find/**", "/cidade/find/**", "/logradouro/find/**", "/", "/resourse/**").permitAll()
+                                "/estado/find/**", "/usuario/find/**", "/cidade/find/**", "/logradouro/find/**", "/**").permitAll()
                         // TODO: verificar a diferença entre hasRole e hasAlthority
                         .requestMatchers(HttpMethod.POST, "/register/**",  "/usuario/create/**").hasAuthority("ADMIN")
                         .requestMatchers(HttpMethod.POST, "/login").permitAll()

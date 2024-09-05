@@ -9,6 +9,8 @@
     --default-border-radius: 10px;
     --side-bar-min-width: 6.25rem;
     --dark-purple: #160F28;
+    --gray-text: #9A9A9A;
+    --light-red: #FFC6C6;
 }
 
 .side-bar {
@@ -157,9 +159,12 @@
 
 .main-content-view {
     /* POSITIONS */
+    display: flex;
+    flex-direction: column;
     margin-left: var(--side-bar-max-width);
     padding: 2rem 5rem 0 2rem;
-    height: 100%;
+    gap: var(--cards-default-gap);
+    height: 100dvh;
 }
 
 .main__primary-content {
@@ -187,30 +192,11 @@
 .main__secondary-content {
     /*POSITIONS*/
     display: flex;
-    flex-direction: column;
+    flex-grow: 1;
+    margin-bottom: 1rem;
     gap: var(--cards-default-gap);
-    height: 50%;
 }
 
-.secondary-content__info {
-    /* POSITIONS */
-    flex-grow: 1;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.secondary-content__side-info {
-    /* POSITIONS */
-    flex-grow: 1;
-    text-align: center;
-}
-
-.secondary-content__info__styles{
-    border-radius: 20px;
-    padding: 0.5rem;
-}
 .primary-content__notification{
     flex-grow: 1;
     display: flex;
@@ -227,9 +213,70 @@
     align-items: center;
 }
 
+.secondary-content__info__styles{
+    border-radius: 15px;
+    padding: 1rem;
+}
+
+.secondary-content__info {
+    /* POSITIONS */
+    display: flex;
+    flex-direction: column;
+    gap: var(--cards-default-gap);
+}
+
+.secondary-content__side-info {
+    /* POSITIONS */
+    flex-grow: 1;
+}
+
 .secondary-content__info{
+    flex-grow: 2;
+}
+
+.info__view{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.info__id{
+    font-weight: 500;
+    color: var(--gray-text);
+}
+
+.info__name{
+    font-size: 3rem;
+}
+
+.empresa-content__up{
+    display: flex;
+}
+
+.empresa-content__down{
+    height: 10rem;
+}
+
+.empresa-content__up__localizacao{
+    padding: 0.5rem;
+    height: 10rem;
+    flex-grow: 1;
 
 }
 
-.secondary-content__side-info{
+.info__view__footer{
+    text-align: center;
+}
+
+.info__view__footer__button{
+    padding: 0.5rem 2rem;
+    color: red;
+    background-color: var(--light-red);
+    font-weight: 500;
+    border-radius: 0.2rem;
+}
+
+.info__view__footer__button:active{
+    scale: 0.95;
 }

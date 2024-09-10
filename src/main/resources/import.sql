@@ -19,7 +19,7 @@ INSERT INTO tb_mai_logradouro (id_logradouro, nr_cep, id_cidade) VALUES ('e50f7a
 INSERT INTO tb_mai_usuario (id_usuario, login, senha, salt, role) VALUES ('aaec524a-3de7-416c-9a89-f73b58b5f229', 'tik@gmail.com', '$2a$10$kw37ua4BzL0vzyTzqsKB6.cSb5F1wAM2AeEjRt3leBZPE3mVFZSF.', '28a58e7451b95e3f', 'USER');
 
 -- Inserindo a Empresa
-INSERT INTO tb_mai_empresa (id_empresa, nm_empresa, ct_telefone, nr_cnpj, tp_tipo_plano, bl_pagamento, id_usuario, id_logradouro) VALUES ('9d19c0fc-cef3-475f-90f1-2b5ca888e2b9', 'Tiktak', NULL, '98765432109876', 'BASICO', true, 'aaec524a-3de7-416c-9a89-f73b58b5f229', 'e50f7aa7-9971-400c-83f0-43390b8f8a88');
+INSERT INTO tb_mai_empresa (id_empresa, nm_empresa, nr_cnpj, tp_tipo_plano, bl_pagamento, id_usuario, id_logradouro) VALUES ('9d19c0fc-cef3-475f-90f1-2b5ca888e2b9', 'Tiktak', '98765432109876', 'BASICO', true, 'aaec524a-3de7-416c-9a89-f73b58b5f229', 'e50f7aa7-9971-400c-83f0-43390b8f8a88');
 
 # Empresa Goggle
 
@@ -36,5 +36,5 @@ INSERT INTO tb_mai_logradouro (id_logradouro, nr_cep, id_cidade) VALUES ('3655fa
 INSERT INTO tb_mai_usuario (id_usuario, login, senha, salt, role) VALUES ('cb27ed44-4967-4255-8399-30d9c1ca5b30', 'gg@gmail.com', '$2a$10$UpmgE8.bHQ7SW4skAgSYRu97GPp72cc7rNtf5tTrxBbdq1QqMd5U2', 'f0a6bb57d4a52a82', 'USER');
 
 -- Inserindo a Empresa
-INSERT INTO tb_mai_empresa (id_empresa, nm_empresa, ct_telefone, nr_cnpj, tp_tipo_plano, bl_pagamento, id_usuario, id_logradouro) VALUES ('359280df-f598-4df6-8139-3cf343b66846', 'Goggle', NULL, '98765432109432', 'PREMIUM', false, 'cb27ed44-4967-4255-8399-30d9c1ca5b30', '3655fa36-d1ff-467b-81ad-dd36da9e8c49');
+INSERT INTO tb_mai_empresa (id_empresa, nm_empresa,  nr_cnpj, tp_tipo_plano, bl_pagamento, id_usuario, id_logradouro) VALUES ('359280df-f598-4df6-8139-3cf343b66846', 'Goggle', '98765432109432', 'PREMIUM', false, 'cb27ed44-4967-4255-8399-30d9c1ca5b30', '3655fa36-d1ff-467b-81ad-dd36da9e8c49');
 

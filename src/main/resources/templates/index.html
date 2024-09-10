@@ -71,14 +71,15 @@
                 </span>
         </section>
     </header>
-    <section class="main__secondary-content  ">
-        <div class="secondary-content__info secondary-content__info__styles hidden">
+    <section class="main__secondary-content  " >
+        <div th:if="${empresas.size() > 0}" class="secondary-content__info secondary-content__info__styles"
+              th:data-id="${empresas[0].idEmpresa}">
             <section class="info" th:onclick="">
-                <p class="info__id" th:text="${empresas[0].idEmpresa.substring(0, 13)}">#81er0d1-321321</p>
+                <p class="info__id" th:text="'#' + ${empresas[0].idEmpresa.substring(0, 13)}">#81er0d1-321321</p>
                 <h2 class="info__name" th:text="${empresas[0].nome}">Goggle</h2>
             </section>
-            <section class="info__view  ">
-                <div class="view__empresa-content  ">
+            <section class="info__view ">
+                <div class="view__empresa-content ">
                     <div class="empresa-content__up ">
                         <div class="empresa-content__up__styles empresa-content__up__localização  ">
                             <p>Localização</p>
@@ -104,15 +105,22 @@
                         <div class="empresa-content__up__styles empresa-content__up__contatos">
                             <p>Contatos</p>
                             <div class="up__contatos__info">
-                                <div>
+                                <div class="email">
                                     <span class="label">Email: </span>
                                     <span class="text" th:text="${empresas[0].usuario.login}">dimas@yahoo.com</span>
                                     <span></span>
                                 </div>
-                                <div>
+                                <div class="telefone">
                                     <span class="label">Telefone: </span>
                                     <span class="text" th:text="${empresas[0].telefone}"></span>
-                                    <span class="btn__add">+</span>
+                                    <span class="btn__add" th:style="${(empresas.size() > 0 and empresas[0].telefone == null) ? 'display:inline;' : 'display:none;'}">+
+                                    </span>
+                                </div>
+                                <div class="site">
+                                    <span class="label">Site: </span>
+                                    <span class="text" th:text="${empresas[0].site}"></span>
+                                    <span class="btn__add" th:style="${(empresas.size() > 0 and empresas[0].site == null) ? 'display:inline;' : 'display:none;'}">+
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -136,24 +144,32 @@
                     </div>
                 </div>
                 <div class="info__view__footer">
-                    <a href=""
-                       class="info__view__footer__button">
+                    <button class="info__view__footer__button">
                         Exluir
-                    </a>
+                    </button>
                 </div>
             </section>
         </div>
-        <div class="secondary-content__side-info secondary-content__info__styles  ">
+        <div th:unless="${empresas.size() > 0}" class="secondary-content__info secondary-content__info__styles">
+            <div style="display: flex;justify-content: center;align-items:
+            center; width: 100%; height: 100%">
+                <p style="font-size: 1.2rem;font-weight: 700;color: var(--gray-text)">Nenhuma empresa selecionada</p>
+            </div>
+        </div>
+        <div class="secondary-content__side-info secondary-content__info__styles  " >
             <h2 class="side-info__title">Empresas</h2>
             <section class="side-info__query">
                 <input type="text" placeholder="Pesquisar"/>
                 <span></span>
             </section>
-            <section class="side-info__empresas_view ">
-                <div th:each="emp : ${empresas}"
-                     th:insert="emp.idEmpresa == empresaSelected ?
-                     ~{fragments/pageRelatedContent :: card_empresa_content_selected(emp)} :
-                     ~{fragments/pageRelatedContent :: card_empresa_content(emp)}"></div>
+            <section class="side-info__empresas_view " th:if="${empresas.size() > 0}">
+                <div th:replace="~{fragments/pageRelatedContent :: card_empresa_content_selected(${empresas[0]})}" th:if="${empresas.size() > 0}"></div>
+                <div th:each="emp : ${empresas.subList(1, empresas.size())}"
+                     th:insert="~{fragments/pageRelatedContent :: card_empresa_content(emp)}" th:if="${empresas.size() > 0}" ></div>
+            </section>
+            <section th:unless="${empresas.size() > 0}" style="display: flex;justify-content: center;align-items:
+            center">
+                <p style="font-size: 1.2rem;font-weight: 700;color: var(--gray-text)">Nenhuma empresa</p>
             </section>
         </div>
     </section>

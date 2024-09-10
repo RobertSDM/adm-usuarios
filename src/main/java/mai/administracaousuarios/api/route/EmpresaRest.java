@@ -2,6 +2,8 @@ package mai.administracaousuarios.api.route;
 
 import jakarta.validation.Valid;
 import mai.administracaousuarios.model.Empresa;
+import mai.administracaousuarios.model.dto.EmpresaSiteDTO;
+import mai.administracaousuarios.model.dto.EmpresaTelDTO;
 import mai.administracaousuarios.repository.EmpresaRepository;
 import org.apache.logging.slf4j.SLF4JLogger;
 import org.slf4j.Logger;
@@ -57,11 +59,43 @@ public class EmpresaRest {
 
     @PutMapping(value = "/update/{id}")
     public ResponseEntity<Empresa> update(@PathVariable String id, @Valid @RequestBody Empresa body) {
+        System.out.println(id);
         try{
             Empresa empresa = empresaRep.findById(id).get();
 
             empresa.setNome(body.getNome());
             empresa.setCnpj(body.getCnpj());
+            empresa.setTelefone(body.getTelefone());
+
+            empresaRep.save(empresa);
+            return ResponseEntity.ok(empresa);
+        }catch(NoSuchElementException e){
+            logger.error(e.getMessage());
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PatchMapping("/update/tel/{id}")
+    public ResponseEntity<Empresa> updateTel(@PathVariable String id, @RequestBody EmpresaTelDTO empTel) {
+        try{
+            Empresa empresa = empresaRep.findById(id).get();
+
+            empTel.toEntity(empTel, empresa);
+
+            empresaRep.save(empresa);
+            return ResponseEntity.ok(empresa);
+        }catch(NoSuchElementException e){
+            logger.error(e.getMessage());
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PatchMapping("/update/site/{id}")
+    public ResponseEntity<Empresa> updateSite(@PathVariable String id, @RequestBody EmpresaSiteDTO empSite) {
+        try{
+            Empresa empresa = empresaRep.findById(id).get();
+
+            empSite.toEntity(empSite, empresa);
 
             empresaRep.save(empresa);
             return ResponseEntity.ok(empresa);

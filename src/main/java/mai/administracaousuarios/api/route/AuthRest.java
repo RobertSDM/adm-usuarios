@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import mai.administracaousuarios.model.Empresa;
 import mai.administracaousuarios.model.Funcionario;
 import mai.administracaousuarios.model.Usuario;
+import mai.administracaousuarios.model.enums.TipoPlano;
 import mai.administracaousuarios.repository.EmpresaRepository;
 import mai.administracaousuarios.repository.FuncionarioRepository;
 import mai.administracaousuarios.repository.UsuarioRepository;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 @RestController
 @RequestMapping("/")
@@ -42,8 +44,13 @@ public class AuthRest {
 
         String[] encrypted = Encrypt.encryptPassword(body.getUsuario().getSenha());
 
+        Boolean randomBoolean = new Random().nextBoolean();
+        TipoPlano randomTipoPlano = TipoPlano.values()[new Random().nextInt(TipoPlano.values().length)];
+
         body.getUsuario().setSenha(encrypted[0]);
         body.getUsuario().setSalt(encrypted[1]);
+        body.setPago(randomBoolean);
+        body.setTipoPlano(randomTipoPlano);
 
         Empresa empresa = empresaRep.save(body);
 

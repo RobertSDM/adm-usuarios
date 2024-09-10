@@ -9,8 +9,13 @@
     --default-border-radius: 10px;
     --side-bar-min-width: 6.25rem;
     --dark-purple: #160F28;
-    --gray-text: #9A9A9A;
+    --gray-text: #8f6363;
     --light-red: #FFC6C6;
+    --light-gray: #F5F5F5;
+    --card-id-color: #8853A9;
+    --card-id-color--select: #D185FF;
+    --card-text-color--select: #A60DFF;
+    --card-backcolor--select: #E4CBF3;
 }
 
 .side-bar {
@@ -28,11 +33,11 @@
     border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.side-bar__mai-icon{
+.side-bar__mai-icon {
     text-align: center;
 }
 
-.side-bar__right-side{
+.side-bar__right-side {
     aspect-ratio: 1/1;
     width: 2rem;
     background-color: slategray;
@@ -69,10 +74,9 @@
     padding: 0.2rem 0.5rem;
     /* STYLES */
     border-radius: var(--default-border-radius);
-
 }
 
-.side-bar__nav > a > span{
+.side-bar__nav > a > span {
     color: black;
     font-weight: 500;
 }
@@ -82,9 +86,20 @@
     width: 1.5rem;
 }
 
+.side-bar__nav > a:nth-child(2){
+    background-color: var(--dark-purple);
+}
+
+.side-bar__nav > a:nth-child(2) > span{
+    color: white;
+}
+.side-bar__nav > a:nth-child(2) > svg{
+    background-color: var(--dark-purple);
+    fill: white;
+}
 .link_active > svg {
     /* STYLES */
-    fill: white ;
+    fill: white;
 }
 
 .side-bar__nav a:hover > svg {
@@ -102,7 +117,7 @@
     color: white;
 }
 
-.side-bar__nav a:active > san {
+.side-bar__nav a:active > span {
     /* STYLES */
     color: white;
 }
@@ -160,6 +175,7 @@
 .main-content-view {
     /* POSITIONS */
     display: flex;
+    background-color: var(--light-gray);
     flex-direction: column;
     margin-left: var(--side-bar-max-width);
     padding: 2rem 5rem 0 2rem;
@@ -170,11 +186,12 @@
 .main__primary-content {
     /*POSITIONS*/
     display: flex;
+    background-color: white;
     align-items: center;
     justify-content: space-between;
-    padding: 1.3rem 2rem;
+    padding: 1.8rem 2rem;
     height: 1.5rem;
-    border-radius: var(--default-border-border-radius);
+    border-radius: var(--default-border-radius);
 }
 
 .primary-content__name-section {
@@ -197,86 +214,280 @@
     gap: var(--cards-default-gap);
 }
 
-.primary-content__notification{
+.primary-content__notification {
     flex-grow: 1;
     display: flex;
     justify-content: end;
     column-gap: 1rem;
 }
 
-.primary-content__notification > span{
+.primary-content__notification > span {
     background-color: slategray;
     border-radius: 0.2rem;
-    padding: 0.2rem;
+    padding: 0.45rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;    
 }
 
-.secondary-content__info__styles{
+.secondary-content__info__styles {
     border-radius: 15px;
+    background-color: white;
     padding: 1rem;
-}
-
-.secondary-content__info {
-    /* POSITIONS */
-    display: flex;
-    flex-direction: column;
-    gap: var(--cards-default-gap);
 }
 
 .secondary-content__side-info {
     /* POSITIONS */
     flex-grow: 1;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: var(--cards-default-gap);
 }
 
-.secondary-content__info{
-    flex-grow: 2;
+.secondary-content__info {
+    flex-grow: 3;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
 }
 
-.info__view{
+.info__view {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
 }
 
-.info__id{
+.info__id {
     font-weight: 500;
     color: var(--gray-text);
 }
 
-.info__name{
+.info__name {
     font-size: 3rem;
 }
 
-.empresa-content__up{
+.view__empresa-content {
+    gap: var(--cards-default-gap);
     display: flex;
+    flex-direction: column;
 }
 
-.empresa-content__down{
+.empresa-content__up {
+    display: flex;
+    gap: var(--cards-default-gap);
+}
+
+.empresa-content__down {
     height: 10rem;
+    background-color: var(--light-gray);
+    border-radius: var(--default-border-radius);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.empresa-content__up__localizacao{
-    padding: 0.5rem;
+.empresa-content__down > div{
+    height: 80%;
+    width: 1px;
+    background-color: #b6b6b6;
+}
+
+.empresa-content__down__plan{
+    text-align: end;
+}
+
+.empresa-content__down__plan > p{
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 1.2rem;
+}
+
+.empresa-content__down__pag > p:not(.empresa-content__down__pag__bool){
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 1.2rem;
+}
+
+.empresa-content__down__pag__bool{
+    font-size: 2rem;
+    color: var(--card-text-color--select);
+    font-weight: 500;
+}
+
+.down__plan__info {
+    display: flex;
+    column-gap: 0.5rem;
+    align-items: center;
+    justify-content: end;
+}
+
+.down__plan__info > p{
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--card-text-color--select);
+}
+
+.empresa-content__up__styles {
+    border-radius: var(--default-border-radius);
+    padding: 1rem;
     height: 10rem;
     flex-grow: 1;
-
+    background-color: var(--light-gray);
 }
 
-.info__view__footer{
+
+.empresa-content__up__localização > p,
+.empresa-content__up__contatos > p{
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+.up__contatos__info{
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.2rem;
+}
+
+.up__contatos__info > div{
+    display: flex;
+    column-gap: 0.2rem;
+}
+
+.up__localização__info{
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.2rem;
+}
+
+.up__localização__info > div > .label,
+.up__contatos__info > div > .label{
+    font-weight: 500;
+}
+
+.up__contatos__info > div > .btn__add{
+    background-color: var(--dark-purple);
+    padding: 0.15rem 0.4rem;
+    color: white;
+    font-weight: 700;
+    border-radius: 0.2rem;
+    cursor: pointer;
+}
+
+.up__contatos__info > div > .btn__add:active{
+    scale: 0.95;
+}
+
+.info__view__footer {
     text-align: center;
 }
 
-.info__view__footer__button{
+.info__view__footer__button {
     padding: 0.5rem 2rem;
     color: red;
     background-color: var(--light-red);
     font-weight: 500;
     border-radius: 0.2rem;
+    cursor: pointer;
 }
 
-.info__view__footer__button:active{
+.info__view__footer__button:active {
     scale: 0.95;
+}
+
+.side-info__title {
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.side-info__query {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: fit-content;
+    background-color: var(--light-gray);
+    border-radius: var(--default-border-radius);
+}
+
+.side-info__query > input {
+    padding: 1.2rem 1rem;
+    flex-grow: 1;
+    background-color: transparent;
+    font-size: 1rem;
+}
+
+.side-info__empresas_view {
+    display: flex;
+    overflow-y: scroll;
+    height: 38rem;
+    flex-direction: column;
+    row-gap: 0.5rem;
+}
+
+/* NORMAL EMPRESA CARD */
+.card__empresa_content {
+    padding: 1rem;
+    background-color: var(--light-gray);
+    border-radius: var(--default-border-radius);
+}
+
+.card__empresa_content__id {
+    color: var(--card-id-color);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.card__empresa_content__name > span {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.card__empresa_content__localizacao > span {
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.card__empresa_content__name {
+    font-size: 1.2rem;
+}
+
+.card__empresa_content__localizacao {
+    font-size: 0.95rem;
+}
+
+/* SELECTED EMPRESA CARD */
+.card__empresa_content--SELECT {
+    padding: 1rem;
+    background-color: var(--card-backcolor--select);
+    border-radius: var(--default-border-radius);
+}
+
+.card__empresa_content__id--SELECT {
+    color: var(--card-id-color--select);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.card__empresa_content__name--SELECT > span {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.card__empresa_content__localizacao--SELECT > span {
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.card__empresa_content__name--SELECT {
+    color: var(--card-text-color--select);
+    font-size: 1.2rem;
+}
+
+.card__empresa_content__localizacao--SELECT {
+    font-size: 0.95rem;
+    color: var(--card-text-color--select);
 }

@@ -1,7 +1,6 @@
 package mai.administracaousuarios.model.dto;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,7 +18,7 @@ public class EmpresaSiteDTO implements InterfaceDTOMapper<Empresa, EmpresaSiteDT
     private String site;
 
     @Override
-    public void toEntity(EmpresaSiteDTO empresaSiteDTO, Empresa empresa) {
-        empresa.setSite(empresaSiteDTO.getSite());
+    public void toEntity(Empresa empresa) {
+        empresa.setSite(this.getSite());
     }
 }

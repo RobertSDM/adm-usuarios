@@ -80,7 +80,7 @@ public class EmpresaRest {
         try{
             Empresa empresa = empresaRep.findById(id).get();
 
-            empTel.toEntity(empTel, empresa);
+            empTel.toEntity(empresa);
 
             empresaRep.save(empresa);
             return ResponseEntity.ok(empresa);
@@ -95,7 +95,7 @@ public class EmpresaRest {
         try{
             Empresa empresa = empresaRep.findById(id).get();
 
-            empSite.toEntity(empSite, empresa);
+            empSite.toEntity(empresa);
 
             empresaRep.save(empresa);
             return ResponseEntity.ok(empresa);

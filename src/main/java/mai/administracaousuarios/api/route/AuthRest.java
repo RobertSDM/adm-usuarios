@@ -40,8 +40,6 @@ public class AuthRest {
 
     @PostMapping(value = "/register/empresa")
     public ResponseEntity<Empresa> registerEmpresa(@Valid @RequestBody Empresa body) {
-        System.out.println(body.getNome());
-
         String[] encrypted = Encrypt.encryptPassword(body.getUsuario().getSenha());
 
         Boolean randomBoolean = new Random().nextBoolean();

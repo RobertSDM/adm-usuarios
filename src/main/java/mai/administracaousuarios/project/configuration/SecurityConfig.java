@@ -34,7 +34,7 @@ public class SecurityConfig {
                                 "/estado/find/**", "/usuario/find/**", "/cidade/find/**", "/logradouro/find/**", "/**").permitAll()
                         // TODO: verificar a diferença entre hasRole e hasAlthority
                         .requestMatchers(HttpMethod.POST, "/register/**",  "/usuario/create/**").hasAuthority("ADMIN")
-                        .requestMatchers(HttpMethod.POST, "/login").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/login", "/inserir-empresa").permitAll()
                         .requestMatchers(HttpMethod.PUT, "/usuario/update/**",  "/cidade/update/**", "/estado/update/**", "/empresa/update/**", "/logradouro/update/**").hasAuthority("ADMIN")
                         .requestMatchers(HttpMethod.DELETE,  "/usuario/delete/**", "/empresa/delete/**").hasAuthority("ADMIN")
                         .requestMatchers(HttpMethod.PATCH,  "/empresa/update/**").permitAll()

@@ -423,7 +423,7 @@
 .side-info__empresas_view {
     display: flex;
     overflow-y: scroll;
-    height: 38rem;
+    height: 35rem;
     flex-direction: column;
     row-gap: 0.5rem;
 }
@@ -433,6 +433,12 @@
     padding: 1rem;
     background-color: var(--light-gray);
     border-radius: var(--default-border-radius);
+}
+
+.card__empresa_content__name,
+.card__empresa_content__id,
+.card__empresa_content__localizacao{
+    margin-bottom: 0;
 }
 
 .card__empresa_content__id {
@@ -466,6 +472,12 @@
     border-radius: var(--default-border-radius);
 }
 
+
+.card__empresa_content__id--SELECT,
+.card__empresa_content__localizacao--SELECT,
+.card__empresa_content__name--SELECT{
+    margin-bottom: 0;
+}
 .card__empresa_content__id--SELECT {
     color: var(--card-id-color--select);
     font-weight: 500;
@@ -490,4 +502,22 @@
 .card__empresa_content__localizacao--SELECT {
     font-size: 0.95rem;
     color: var(--card-text-color--select);
+}
+
+.empresa__view__btn-link{
+    padding: 0.5rem 1rem;
+    background-color: var(--dark-purple);
+    border-radius: var(--default-border-radius);
+    width: 100%;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+}
+
+.empresa__view__btn-link:active{
+    scale: 0.95;
+}
+.empresa__view__btn-link:hover,
+.empresa__view__btn-link:active{
+    color: white;
 }

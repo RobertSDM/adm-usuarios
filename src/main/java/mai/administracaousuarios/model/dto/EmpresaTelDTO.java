@@ -17,7 +17,7 @@ public class EmpresaTelDTO implements InterfaceDTOMapper<Empresa, EmpresaTelDTO>
     private  String telefone;
 
     @Override
-    public void toEntity(EmpresaTelDTO empTelDTO, Empresa emp) {
-        emp.setTelefone(empTelDTO.getTelefone());
+    public void toEntity(Empresa emp) {
+        emp.setTelefone(this.getTelefone());
     }
 }

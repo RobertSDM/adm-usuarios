@@ -1,6 +1,6 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
 <html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/pageRelatedContent :: pageHeader('Home')}"></head>
+<head th:replace="~{fragments/pageRelatedContent :: pageHeader('Home', '/js/home.js', '/css/home.css')}"></head>
 <body>
 <aside class="side-bar">
     <section class="side-bar__mai-icon">
@@ -28,7 +28,7 @@
             </svg>
             <span>
                     Home
-                </span>
+            </span>
         </a>
         <a href="">
             <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
@@ -37,7 +37,7 @@
             </svg>
             <span>
                     Empresas
-                </span>
+            </span>
         </a>
         <a href="">
             <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
@@ -45,8 +45,8 @@
                 <path d="M480-340q33 0 56.5-23.5T560-420q0-33-23.5-56.5T480-500q-33 0-56.5 23.5T400-420q0 33 23.5 56.5T480-340ZM160-120q-33 0-56.5-23.5T80-200v-440q0-33 23.5-56.5T160-720h160v-80q0-33 23.5-56.5T400-880h160q33 0 56.5 23.5T640-800v80h160q33 0 56.5 23.5T880-640v440q0 33-23.5 56.5T800-120H160Zm0-80h640v-440H160v440Zm240-520h160v-80H400v80ZM160-200v-440 440Z"/>
             </svg>
             <span>
-                    Empresas
-                </span>
+                    Analises
+            </span>
         </a>
     </nav>
 </aside>
@@ -171,6 +171,7 @@
             center">
                 <p style="font-size: 1.2rem;font-weight: 700;color: var(--gray-text)">Nenhuma empresa</p>
             </section>
+            <a th:href="@{/criar-empresa}" class="empresa__view__btn-link">Criar empresa</a>
         </div>
     </section>
 </section>

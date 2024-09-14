@@ -1,6 +1,7 @@
 package mai.administracaousuarios.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -46,11 +47,13 @@ public class Empresa {
     @Column(name = "bl_pagamento")
     private Boolean pago;
     @Setter
+    @Valid
     @OneToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_usuario")
     @NotNull(message = "The attribute usuario cannot be null")
     private Usuario usuario;
     @Setter
+    @Valid
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_logradouro")
     @NotNull(message = "The attribute logradouro cannot be null")

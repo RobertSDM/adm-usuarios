@@ -1,6 +1,7 @@
 package mai.administracaousuarios.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -25,6 +26,7 @@ public class Logradouro {
     @Size(max = 8, min = 8, message = "The cep size must be 8")
     private String cep;
     @Setter
+    @Valid
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_cidade")
     @NotNull(message = "The attribute cidade cannot be null or blank")

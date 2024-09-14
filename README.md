@@ -3,12 +3,11 @@
 
 
 ## Integrantes
-- Luiza Nunes de Jesus - Banco de dados
+- Luiza Nunes de Jesus - Banco de Dados
 - Melissa de Oliveira Pecoraro - IA
 - Pamella Schimalesky Engholm - Dotnet e QA
 - Pedro Marques Pais Pavão  - Devops
-- Roberto Menezes dos Santos - Java e mobile
-
+- Roberto Menezes dos Santos - Java e Mobile
 
 # JWT
 
@@ -58,6 +57,7 @@ Diagrama de relacionamento \
 3. [Cidade](#cidade)
 4. [Estado](#estado)
 5. [Autenticação](#auth)
+6. [Templates]()
 
 `GET`
 
@@ -88,6 +88,20 @@ Diagrama de relacionamento \
 |--------|------------------------------------------------------------------|
 | 204    | Caso a empresa seja deletada com sucesso                         |
 | 404    | Caso a empresa com o id enviado não seja encontrada              | 
+
+`PATCH`
+
+#### /update/tel/{id}
+| Código | Descrição                                           |
+|--------|-----------------------------------------------------|
+| 200    | Caso o tel seja atualizado com sucesso              |
+| 404    | Caso a empresa com o id enviado não seja encontrada | 
+
+#### /update/site/{id}
+| Código | Descrição                                           |
+|--------|-----------------------------------------------------|
+| 200    | Caso o site seja atualizado com sucesso             |
+| 404    | Caso a empresa com o id enviado não seja encontrada | 
 
 ## <a id="usuario"></a>Usuario /usuario
 ### Pricipais rotas
@@ -242,3 +256,17 @@ Diagrama de relacionamento \
 | Código | Descrição                                          |
 |--------|----------------------------------------------------|
 | 200    | Retorna um json com o estado atualizado            |
+
+## <a id="template_home"></a>Template Home 
+
+`GET`
+
+#### /
+| Código | Descrição             |
+|--------|-----------------------|
+| 200    | Retorna a pagina home |
+
+#### /adm/empresa/deletar/{id}
+| Código | Descrição                      |
+|--------|--------------------------------|
+| 200    | Redireciona para a página home |

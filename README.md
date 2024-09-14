@@ -270,3 +270,21 @@ Diagrama de relacionamento \
 | Código | Descrição                      |
 |--------|--------------------------------|
 | 200    | Redireciona para a página home |
+
+## <a id="template_criar_empresa"></a>Template Criar Empresa
+
+`GET`
+
+#### /criar-empresa
+| Código | Descrição                      |
+|--------|--------------------------------|
+| 200    | Retorna a pagina criar_empresa |
+
+`POST`
+
+#### /inserir-empresa
+| Código | Descrição                                                     |
+|--------|---------------------------------------------------------------|
+| 200    | Redireciona para a página a url "/"                           |
+| 200    | Caso de erro ao validar a página com os erros                 |
+| 200    | Caso caia em um try catch retorna para a página criar_empresa |

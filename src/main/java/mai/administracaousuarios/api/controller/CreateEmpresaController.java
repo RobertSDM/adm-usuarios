@@ -6,7 +6,10 @@ import mai.administracaousuarios.model.enums.Roles;
 import mai.administracaousuarios.model.enums.TipoPlano;
 import mai.administracaousuarios.project.security.Encrypt;
 import mai.administracaousuarios.repository.EmpresaRepository;
+import org.apache.logging.slf4j.SLF4JLogger;
 import org.hibernate.exception.ConstraintViolationException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
@@ -24,6 +27,9 @@ public class CreateEmpresaController {
 
     @Autowired
     private EmpresaRepository empresaRep;
+
+    private final Logger logger = LoggerFactory.getLogger(SLF4JLogger.class);
+
 
     @GetMapping("/criar-empresa")
     public ModelAndView criarEmpresa() {
@@ -59,7 +65,8 @@ public class CreateEmpresaController {
                 empresaRep.save(novaEmpresa);
 
                 return new ModelAndView("redirect:/");
-            }catch (DataIntegrityViolationException e ){
+            }catch (DataIntegrityViolationException e){
+                logger.error(e.getMessage());
                 ModelAndView mv = new ModelAndView("criar_empresa");
                 mv.addObject("tipoPlano", TipoPlano.values());
                 mv.addObject("empresa", novaEmpresa);

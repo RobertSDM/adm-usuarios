@@ -200,10 +200,15 @@
     border-right: 1px solid rgba(0, 0, 0, 0.2);
 }
 
+.primary-content__name{
+    margin-bottom: 0;
+}
+
 .primary-content__cargo {
     /* STYLES */
     font-size: 0.7rem;
     color: rgba(0, 0, 0, 0.7);
+    margin-bottom: 0;
 }
 
 .main__secondary-content {

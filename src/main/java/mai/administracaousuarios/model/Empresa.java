@@ -27,11 +27,11 @@ public class Empresa {
     private String nome;
     @Setter
     @Column(name = "ct_telefone", unique = true)
-    @Size(max = 30, min = 10, message = "The size must be between 10 and 30")
+    @Size(max = 9, min = 9, message = "The size must be between 10 and 30")
     private String telefone;
     @Setter
     @Column(name = "st_site", unique = true)
-    @Size(min = 10, message = "The min size is 10")
+    @Size(min = 4, message = "The min size is 10")
     private String site;
     @Setter
     @Column(name = "nr_cnpj", nullable = false, unique = true)
@@ -39,11 +39,11 @@ public class Empresa {
     @Size(max = 14, min = 14, message = "The cnpj size must be 14")
     private String cnpj;
     @Setter
-    @Column(name = "tp_tipo_plano", nullable = false, unique = true)
+    @Column(name = "tp_tipo_plano", nullable = false)
     @Enumerated(EnumType.STRING)
     private TipoPlano tipoPlano;
     @Setter
-    @Column(name = "bl_pagamento", unique = true)
+    @Column(name = "bl_pagamento")
     private Boolean pago;
     @Setter
     @OneToOne(optional = false, cascade = CascadeType.ALL)

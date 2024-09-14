@@ -36,7 +36,7 @@ public class HomePageController {
         return mv;
     }
 
-    @GetMapping("/adm/empresa/deletar/{id}")
+    @GetMapping("/adm/empresa/delete/{id}")
     public String deletarEmpresa (@PathVariable String id) {
         empresaRep.deleteById(id);
 

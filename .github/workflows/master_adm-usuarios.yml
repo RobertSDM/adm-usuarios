@@ -22,6 +22,11 @@ jobs:
           java-version: '17'
           distribution: 'microsoft'
 
+        env:
+          DATABASE_URL: ${{secrets.DATABASE_URL}}
+          DATABASE_USERNAME: ${{secrets.DATABASE_USERNAME}}
+          DATABASE_PASSWORD: ${{secrets.DATABASE_PASSWORD}}
+
       - name: Build with Maven
         run: mvn clean install
 

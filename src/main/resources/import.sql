@@ -4,7 +4,7 @@ insert into tb_mai_funcionario(id_funcionario, nm_cargo, nm_email, img_imagem_pe
 insert into tb_mai_usuario (id_usuario, login, role, salt, senha) values ('9b0975d5-d653-4234-be21-4ece573d0ab3', 'mchagas@gmail.com', 'ADMIN', '04a2fb5784993c7e', '$2a$10$ek6XGubKQuQ.Aurt0eGEFekRNHU6QoVgjBolsSWyofthdcrrM2AOy');
 insert into tb_mai_funcionario (id_funcionario, nm_cargo, nm_email, img_imagem_perfil, nm_funcionario, id_usuario) values ('24f7f9d9-45df-409a-b8bf-d8454d73ab07', 'Analista Empresarial', 'mchagas@gmail.com', '', 'Mariana Chagas de Oliveira', '9b0975d5-d653-4234-be21-4ece573d0ab3');
 
-# Empresa Tiktak
+-- Empresa Tiktak
 
 -- Inserindo o Estado
 INSERT INTO tb_mai_estado (id_estado, sg_estado, nm_estado) VALUES ('3e08966a-09c3-4747-b972-3a0072962cac', 'SP', 'São Paulo');
@@ -17,7 +17,7 @@ INSERT INTO tb_mai_usuario (id_usuario, login, senha, salt, role) VALUES ('aaec5
 -- Inserindo a Empresa
 INSERT INTO tb_mai_empresa (id_empresa, nm_empresa, nr_cnpj, tp_tipo_plano, bl_pagamento, id_usuario, id_logradouro) VALUES ('9d19c0fc-cef3-475f-90f1-2b5ca888e2b9', 'Tiktak', '98765432109876', 'BASICO', true, 'aaec524a-3de7-416c-9a89-f73b58b5f229', 'e50f7aa7-9971-400c-83f0-43390b8f8a88');
 
-# Empresa Goggle
+-- Empresa Goggle
 
 -- Inserindo o Estado
 INSERT INTO tb_mai_estado (id_estado, sg_estado, nm_estado) VALUES ('3d216c37-240e-453b-a6c2-d3012281a9bb', 'NY', 'Nova York');
@@ -30,7 +30,7 @@ INSERT INTO tb_mai_usuario (id_usuario, login, senha, salt, role) VALUES ('cb27e
 -- Inserindo a Empresa
 INSERT INTO tb_mai_empresa (id_empresa, nm_empresa, nr_cnpj, tp_tipo_plano, bl_pagamento, id_usuario, id_logradouro) VALUES ('359280df-f598-4df6-8139-3cf343b66846', 'Goggle', '98765432109432', 'PREMIUM', false, 'cb27ed44-4967-4255-8399-30d9c1ca5b30', '3655fa36-d1ff-467b-81ad-dd36da9e8c49');
 
-# Empresa Macrosoft
+-- Empresa Macrosoft
 
 -- Inserindo o Estado
 INSERT INTO tb_mai_estado (id_estado, sg_estado, nm_estado) VALUES ('e4443bb0-469d-4c10-9d69-4e4e1a0c689e', 'NY', 'Nova York');
@@ -43,7 +43,7 @@ INSERT INTO tb_mai_usuario (id_usuario, login, senha, salt, role) VALUES ('067c7
 -- Inserindo a Empresa
 INSERT INTO tb_mai_empresa (id_empresa, nm_empresa, nr_cnpj, tp_tipo_plano, bl_pagamento, id_usuario, id_logradouro) VALUES ('b50a41f2-600f-455e-ba39-bd4f574fce4f', 'Macrosoft', '98765345212348', 'BASICO', false, '067c7c43-db0d-47c9-998a-721c1d52f99b', 'e901821c-bc4a-4975-ac9a-b6cf7b0298d2');
 
-# Empresa PAIF
+-- Empresa PAIF
 
 -- Inserindo o Estado
 INSERT INTO tb_mai_estado (id_estado, sg_estado, nm_estado) VALUES ('9188374d-9057-4d42-9184-ff3a0d69300d', 'SP', 'São Paulo');

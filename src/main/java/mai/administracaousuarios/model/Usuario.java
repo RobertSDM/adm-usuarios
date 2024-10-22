@@ -27,8 +27,8 @@ public class Usuario implements UserDetails {
     @Column(name = "id_usuario", length = 50)
     private String idUsuario;
     @Column(name = "login", length = 30, nullable = false, unique = true)
-    @Size(max = 30, min = 4, message = "The login size must be between 4 and 30")
-    @NotEmpty(message = "The attribute login cannot be null or blank")
+    @Size(max = 30, min = 4, message = "{usuario.login.size}")
+    @NotEmpty(message = "{usuario.login.notEmpty}")
     private String login;
     @Column(name = "senha",length = 100, nullable = false)
     private String senha;

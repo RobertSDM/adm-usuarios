@@ -7,14 +7,12 @@ import mai.administracaousuarios.model.enums.TipoPlano;
 import mai.administracaousuarios.project.security.Encrypt;
 import mai.administracaousuarios.repository.EmpresaRepository;
 import org.apache.logging.slf4j.SLF4JLogger;
-import org.hibernate.exception.ConstraintViolationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,7 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Random;
 
 @Controller
-public class CreateEmpresaController {
+public class CriarEmpresaController {
 
     @Autowired
     private EmpresaRepository empresaRep;
@@ -64,7 +62,7 @@ public class CreateEmpresaController {
             try{
                 empresaRep.save(novaEmpresa);
 
-                return new ModelAndView("redirect:/");
+                return new ModelAndView("redirect:/empresas");
             }catch (DataIntegrityViolationException e){
                 logger.error(e.getMessage());
                 ModelAndView mv = new ModelAndView("criar_empresa");

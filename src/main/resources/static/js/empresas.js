@@ -8,13 +8,13 @@ const btn_excluir_empresa = document.querySelector(".info__view__footer__button"
 btn_excluir_empresa.addEventListener("click", async () => {
     const decisao = confirm("Quer mesmo excluir essa empresa?")
     if(decisao){
-        await fetch(`/adm/empresa/delete/${secContentInfo.getAttribute("data-id")}`).then(() => window.location.reload())
+        await fetch(`/adm/empresa/${secContentInfo.getAttribute("data-id")}/delete`).then(() => window.location.reload())
     }
 })
 
 btn_add_tel.addEventListener("click", async () => {
     const telefone = prompt("Digite o novo telefone sem o DDD (tamanho: 9)")
-    await fetch(`empresa/update/tel/${secContentInfo.getAttribute("data-id")}`, {
+    await fetch(`/empresa/update/tel/${secContentInfo.getAttribute("data-id")}`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json"  // Define que o conteúdo será JSON

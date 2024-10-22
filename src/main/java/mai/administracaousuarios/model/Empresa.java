@@ -23,29 +23,35 @@ public class Empresa {
     private String idEmpresa;
     @Setter
     @Column(name = "nm_empresa", nullable = false, unique = true)
-    @NotEmpty(message = "The attribute nome cannot be null or blank")
-    @Size(max = 50, min = 4, message = "The name size must be between 4 and 50")
+    @NotEmpty(message = "{empresa.nome.notEmpty}")
+    @Size(max = 50, min = 4, message = "{empresa.nome.size}")
     private String nome;
+
     @Setter
     @Column(name = "ct_telefone", unique = true)
-    @Size(max = 9, min = 9, message = "The size must be between 10 and 30")
+    @Size(max = 9, min = 9, message = "{empresa.telefone.size}")
     private String telefone;
+
     @Setter
     @Column(name = "st_site", unique = true)
-    @Size(min = 4, message = "The min size is 10")
+    @Size(min = 4, message = "{empresa.site.size}")
     private String site;
+
     @Setter
     @Column(name = "nr_cnpj", nullable = false, unique = true)
-    @NotEmpty(message = "The attribute cnpj cannot be null or blank")
-    @Size(max = 14, min = 14, message = "The cnpj size must be 14")
+    @NotEmpty(message = "{empresa.cnpj.notEmpty}")
+    @Size(max = 14, min = 14, message = "{empresa.cnpj.size}")
     private String cnpj;
+
     @Setter
     @Column(name = "tp_tipo_plano", nullable = false)
     @Enumerated(EnumType.STRING)
     private TipoPlano tipoPlano;
+
     @Setter
     @Column(name = "bl_pagamento")
     private Boolean pago;
+
     @Setter
     @Valid
     @OneToOne(optional = false, cascade = CascadeType.ALL)

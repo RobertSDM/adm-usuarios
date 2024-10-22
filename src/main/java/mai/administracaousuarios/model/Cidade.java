@@ -21,8 +21,9 @@ public class Cidade {
     private String idCidade;
     @Setter
     @Column(name = "nm_cidade", length = 50)
-    @NotNull(message = "The attribute cannot be null")
+    @NotNull(message = "{cidade.nome.notNull}")
     private String nome;
+
     @Setter
     @Valid
     @OneToOne(optional = false, cascade = CascadeType.ALL)

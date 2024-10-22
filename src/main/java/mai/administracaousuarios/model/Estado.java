@@ -20,13 +20,15 @@ public class Estado {
     private String idEstado;
     @Setter
     @Column(name = "sg_estado", length = 2, nullable = false)
-    @NotEmpty(message = "The attribute sigla cannot be null or blank")
-    @Size(max = 2, min = 2, message = "The cep size must be 2")
+    @NotEmpty(message = "{estado.sigla.notEmpty}")
+    @Size(max = 2, min = 2, message = "{estado.sigla.size}")
     private String sigla;
+
     @Setter
     @Column(name = "nm_estado", length = 30, nullable = false)
-    @NotEmpty(message = "The attribute nome cannot be null or blank")
-    @Size(max = 30, min = 4, message = "The nome size must be between 4 and 30")
+    @NotEmpty(message = "{estado.nome.notEmpty}")
+    @Size(max = 30, min = 4, message = "{estado.nome.size}")
     private String nome;
+
 
 }

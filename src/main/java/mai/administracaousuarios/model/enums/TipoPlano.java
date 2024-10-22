@@ -1,14 +1,14 @@
 package mai.administracaousuarios.model.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum TipoPlano {
-    BASICO("BASICO"),
+    BASIC("BASIC"),
     PREMIUM("PREMIUM");
 
-    private String tipo;
+    private final String tipo;
     TipoPlano(String tipo) {
         this.tipo = tipo;
-    }
-    public String getTipo() {
-        return tipo;
     }
 }

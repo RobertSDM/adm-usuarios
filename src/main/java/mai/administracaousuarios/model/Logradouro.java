@@ -22,9 +22,10 @@ public class Logradouro {
     private String idLogradouro;
     @Setter
     @Column(name = "nr_cep", length = 8, nullable = false)
-    @NotEmpty(message = "The attribute cep cannot be null or blank")
-    @Size(max = 8, min = 8, message = "The cep size must be 8")
+    @NotEmpty(message = "{logradouro.cep.notEmpty}")
+    @Size(max = 8, min = 8, message = "{logradouro.cep.size}")
     private String cep;
+
     @Setter
     @Valid
     @ManyToOne(optional = false, cascade = CascadeType.ALL)

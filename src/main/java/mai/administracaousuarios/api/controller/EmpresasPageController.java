@@ -2,9 +2,13 @@ package mai.administracaousuarios.api.controller;
 
 import mai.administracaousuarios.model.Empresa;
 import mai.administracaousuarios.model.Funcionario;
+import mai.administracaousuarios.model.Usuario;
 import mai.administracaousuarios.repository.EmpresaRepository;
 import mai.administracaousuarios.repository.FuncionarioRepository;
+import mai.administracaousuarios.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,15 +23,26 @@ public class EmpresasPageController {
     private FuncionarioRepository funcionarioRep;
     @Autowired
     private EmpresaRepository empresaRep;
+    @Autowired
+    private UsuarioRepository usuarioRep;
 
     @GetMapping("/empresas")
     public ModelAndView empresas() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = auth.getName();
+
+        Usuario usuario = usuarioRep.findByLogin(username).orElse(null);
+
         var mv = new ModelAndView("empresas_page");
 
-        Optional<Funcionario> funcionario = funcionarioRep.findById("24f7f9d9-45df-409a-b8bf-d8454d73ab07");
-        List<Empresa> empresas = empresaRep.findAll();
+        if (usuario == null){
+            return mv;
+        }
 
-        mv.addObject("func", funcionario.get());
+        Optional<Funcionario> funcionario = funcionarioRep.findByUsuario(usuario);
+        List<Empresa> empresas = empresaRep.findByOrderByNomeAsc();
+
+        mv.addObject("func", funcionario.orElse(null));
         mv.addObject("empresas", empresas);
 
         return mv;

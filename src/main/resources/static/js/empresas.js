@@ -8,7 +8,11 @@ const btn_excluir_empresa = document.querySelector(".info__view__footer__button"
 btn_excluir_empresa.addEventListener("click", async () => {
     const decisao = confirm("Quer mesmo excluir essa empresa?")
     if(decisao){
-        await fetch(`/adm/empresa/${secContentInfo.getAttribute("data-id")}/delete`).then(() => window.location.reload())
+        await fetch(`/adm/empresa/${secContentInfo.getAttribute("data-id")}/delete`, {
+            headers:{
+                "Content-Type": "application/json"
+            }
+        }).then(() => window.location.reload())
     }
 })
 

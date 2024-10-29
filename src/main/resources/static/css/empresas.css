@@ -29,8 +29,9 @@
     /* PROPORTIONS*/
     height: 100dvh;
     width: var(--side-bar-max-width);
-    padding: 2rem 1rem 1rem 1rem;
+    padding: 2rem 1rem 2rem 1rem;
     border-right: 1px solid rgba(0, 0, 0, 0.1);
+    align-items: center;
 }
 
 .side-bar__mai-icon {
@@ -392,6 +393,15 @@
 }
 
 .info__view__footer__button {
+    padding: 0.5rem 2rem;
+    color: red;
+    background-color: var(--light-red);
+    font-weight: 500;
+    border-radius: 0.2rem;
+    cursor: pointer;
+}
+
+.side-bar__button{
     padding: 0.5rem 2rem;
     color: red;
     background-color: var(--light-red);

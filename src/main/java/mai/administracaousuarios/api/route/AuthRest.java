@@ -10,14 +10,14 @@ import mai.administracaousuarios.repository.FuncionarioRepository;
 import mai.administracaousuarios.repository.UsuarioRepository;
 import mai.administracaousuarios.project.security.Encrypt;
 import mai.administracaousuarios.service.TokenService;
+import mai.administracaousuarios.service.UsuarioAuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Optional;
 import java.util.Random;
 
 @RestController
@@ -28,7 +28,7 @@ public class AuthRest {
     UsuarioRepository usuarioRep;
 
     @Autowired
-    AuthenticationManager authenticationManager;
+    UsuarioAuthenticationService usuarioAuthenticationProvider;
 
     @Autowired
     EmpresaRepository empresaRep;
@@ -71,10 +71,16 @@ public class AuthRest {
     @PostMapping("/login")
     public ResponseEntity<HashMap<String, String>> login(@RequestBody  Usuario body) {
 
-        Usuario usuario = usuarioRep.findByLogin(body.getLogin());
+        Optional<Usuario> usuarioOp = usuarioRep.findByLogin(body.getLogin());
+
+        if (usuarioOp.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        Usuario usuario = usuarioOp.get();
 
         UsernamePasswordAuthenticationToken userPass = new UsernamePasswordAuthenticationToken(body.getLogin(), body.getSenha() + usuario.getSalt());
-        var auth = this.authenticationManager.authenticate(userPass);
+        var auth = this.usuarioAuthenticationProvider.authenticate(userPass);
 
         String token = tokenService.createToken((Usuario) auth.getPrincipal());
 

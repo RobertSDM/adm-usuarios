@@ -32,7 +32,7 @@ public class AuthFilter extends OncePerRequestFilter {
 
         if(token != null) {
             String login = tokenService.verifyToken(token);
-            Usuario usuario = usuarioRep.findByLogin(login);
+            Usuario usuario = usuarioRep.findByLogin(login).orElse(null);
 
             if(usuario != null) {
                 UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(usuario, null, usuario.getAuthorities());

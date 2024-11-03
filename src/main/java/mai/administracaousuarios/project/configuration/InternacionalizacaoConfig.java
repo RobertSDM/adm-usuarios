@@ -21,7 +21,8 @@ public class InternacionalizacaoConfig implements WebMvcConfigurer {
         ms.setBasenames("classpath:internacionalizacao/criar_empresa_page",
                 "classpath:internacionalizacao/empresa_page",
                 "classpath:internacionalizacao/entity_validation_columns",
-                "classpath:internacionalizacao/login_page");
+                "classpath:internacionalizacao/login_page",
+                "classpath:internacionalizacao/mensagem_empresa_page");
         return ms;
     }
 

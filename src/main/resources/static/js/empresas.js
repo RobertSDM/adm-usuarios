@@ -5,11 +5,24 @@ const btn_add_tel = document.querySelector(".up__contatos__info > .telefone > .b
 const btn_add_site = document.querySelector(".up__contatos__info > .site > .btn__add")
 const btn_excluir_empresa = document.querySelector(".info__view__footer__button")
 
+const cardEmpresa = document.querySelectorAll("div[data-id-card-empresa]")
+
+cardEmpresa.forEach(card => {
+    card.addEventListener("click", (e) => {
+        e.preventDefault()
+        const idEmpresa = e.currentTarget.getAttribute("data-id-card-empresa")
+
+        if (idEmpresa !== null) {
+            window.location.replace(`empresas/${idEmpresa}/mensagem`)
+        }
+    })
+})
+
 btn_excluir_empresa.addEventListener("click", async () => {
     const decisao = confirm("Quer mesmo excluir essa empresa?")
-    if(decisao){
+    if (decisao) {
         await fetch(`/adm/empresa/${secContentInfo.getAttribute("data-id")}/delete`, {
-            headers:{
+            headers: {
                 "Content-Type": "application/json"
             }
         }).then(() => window.location.reload())
@@ -23,11 +36,11 @@ btn_add_tel.addEventListener("click", async () => {
         headers: {
             "Content-Type": "application/json"  // Define que o conteúdo será JSON
         },
-        body: JSON.stringify({ telefone })
+        body: JSON.stringify({telefone})
     }).then((res) => {
-        if(res.status !== 200){
+        if (res.status !== 200) {
             alert("Telefone inválido")
-        }else{
+        } else {
             window.location.reload()
         }
     })
@@ -40,12 +53,12 @@ btn_add_site.addEventListener("click", async () => {
         headers: {
             "Content-Type": "application/json"  // Define que o conteúdo será JSON
         },
-        body: JSON.stringify({ site })
+        body: JSON.stringify({site})
     }).then((res) => {
-        if(res.status !== 200){
+        if (res.status !== 200) {
             alert("Site inválido")
-        }else{
+        } else {
             window.location.reload()
         }
-    } )
+    })
 })

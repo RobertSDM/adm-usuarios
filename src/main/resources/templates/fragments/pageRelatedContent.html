@@ -13,7 +13,7 @@
 </head>
 
 <!-- Fragment Card Empresa Content -->
-<div th:fragment="card_empresa_content(emp)" class="card__empresa_content">
+<div th:data-id-card-empresa="${emp.idEmpresa}" th:fragment="card_empresa_content(emp)" class="card__empresa_content">
     <p class="card__empresa_content__id" th:text="'#' + ${emp.idEmpresa.substring(0, 13)}">#81er0d1
         -321321</p>
     <p class="card__empresa_content__name"><span th:text="#{card_empresa_conteudo_nome} + ':'">Nome:</span>
@@ -24,7 +24,7 @@
                         Unidos</span></p>
 </div>
 
-<div th:fragment="card_empresa_content_selected(emp)" class="card__empresa_content--SELECT">
+<div th:data-id-card-empresa="${emp.idEmpresa}" th:fragment="card_empresa_content_selected(emp)" class="card__empresa_content--SELECT">
     <p class="card__empresa_content__id--SELECT" th:text="'#' + ${emp.idEmpresa.substring(0, 13)}">#81er0d1
         -321321</p>
     <p class="card__empresa_content__name--SELECT"><span th:text="#{card_empresa_conteudo_nome} + ':'">Nome:</span>

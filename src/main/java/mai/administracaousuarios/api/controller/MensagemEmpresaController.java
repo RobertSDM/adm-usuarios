@@ -23,7 +23,7 @@ public class MensagemEmpresaController {
         this.produtorKafka = produtorKafka;
     }
 
-    @GetMapping("empresas/{idEmpresa}/mensagem")
+    @GetMapping("/empresas/{idEmpresa}/mensagem")
     public ModelAndView mensagemEmpresa(@PathVariable String idEmpresa) {
         Empresa empresa = empresaRep.findById(idEmpresa).orElse(null);
 
@@ -38,7 +38,7 @@ public class MensagemEmpresaController {
         return mv;
     }
 
-    @PostMapping("mensagem/empresa/{idEmpresa}")
+    @PostMapping("/empresas/{idEmpresa}/mensagem")
     public String mensagemEmpresa(@PathVariable String idEmpresa, @RequestParam(name = "mensagem") String mensagem, Model model) {
         produtorKafka.enviarMensagem(mensagem);
 

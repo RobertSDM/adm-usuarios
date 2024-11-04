@@ -8,7 +8,7 @@
     <h1 th:text="'Envie uma mensagem para ' + ${empresa.nome}"></h1>
 </div>
 <div style="display: flex; flex-direction: column; justify-content: space-between;">
-    <form th:action="@{/mensagem/empresa/{idEmpresa}(idEmpresa = ${empresa.idEmpresa})}" method="post">
+    <form th:action="@{/empresas/{idEmpresa}/mensagem(idEmpresa = ${empresa.idEmpresa})}" method="post">
         <input name="mensagem" placeholder="Mensagem" type="text" style="outline: none"/>
         <button>
             Send

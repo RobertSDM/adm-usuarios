@@ -13,7 +13,7 @@ cardEmpresa.forEach(card => {
         const idEmpresa = e.currentTarget.getAttribute("data-id-card-empresa")
 
         if (idEmpresa !== null) {
-            window.location.replace(`empresas/${idEmpresa}/mensagem`)
+            window.location.replace(`/empresas/${idEmpresa}/mensagem`)
         }
     })
 })

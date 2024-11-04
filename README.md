@@ -46,7 +46,7 @@ Diagrama de relacionamento \
 ![Diagrama de relacionamento](assets/images/Diagrama_relacional.svg)
 
 ## Video descrevendo projeto
-[Video de apresentação do projeto](https://youtu.be/WWKxt3CVMxM)
+[Video de apresentação do projeto](https://youtu.be/z8PBH5MsTmo)
 
 # Documentação API
 
